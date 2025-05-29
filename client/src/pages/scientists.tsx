@@ -31,8 +31,8 @@ export default function Scientists() {
           theme.toLowerCase().includes(searchTerm.toLowerCase())
         ));
       
-      const matchesField = selectedField === "All Fields" || scientist.field === selectedField;
-      const matchesInstitution = selectedInstitution === "All Institutions" || scientist.institution === selectedInstitution;
+      const matchesField = selectedField === "Todas as Áreas" || scientist.field === selectedField;
+      const matchesInstitution = selectedInstitution === "Todas as Instituições" || scientist.institution === selectedInstitution;
       const matchesThemes = selectedThemes.length === 0 || 
         (scientist.researchThemes && selectedThemes.some(theme => 
           scientist.researchThemes!.includes(theme)
@@ -48,9 +48,9 @@ export default function Scientists() {
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Scientists Directory</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Diretório de Cientistas</h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Explore profiles of remarkable women making significant contributions to science and technology.
+            Explore perfis de mulheres notáveis fazendo contribuições significativas para a ciência e tecnologia.
           </p>
         </div>
 
@@ -74,7 +74,7 @@ export default function Scientists() {
 
         {visibleScientists.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No scientists found matching your criteria.</p>
+            <p className="text-gray-500 text-lg">Nenhuma cientista encontrada com os critérios selecionados.</p>
           </div>
         )}
 
@@ -84,7 +84,7 @@ export default function Scientists() {
               onClick={() => setVisibleCount(prev => prev + 6)}
               className="bg-primary hover:bg-indigo-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
             >
-              Load More Scientists
+              Carregar Mais Cientistas
             </Button>
           </div>
         )}

@@ -6,9 +6,9 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/scientists", label: "Scientists" },
-    { path: "/questionnaire", label: "Questionnaire" },
+    { path: "/", label: "Início" },
+    { path: "/scientists", label: "Cientistas" },
+    { path: "/questionnaire", label: "Questionário" },
   ];
 
   const isActive = (path: string) => {
@@ -23,7 +23,7 @@ export default function Navigation() {
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center">
               <i className="fas fa-microscope text-primary text-2xl mr-3"></i>
-              <span className="text-xl font-bold text-neutral-900">Women in Science</span>
+              <span className="text-xl font-bold text-neutral-900">Mulheres na Ciência</span>
             </Link>
             
             <div className="hidden md:flex space-x-8">

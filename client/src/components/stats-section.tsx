@@ -1,9 +1,9 @@
 export default function StatsSection() {
   const stats = [
-    { value: "500+", label: "Women Scientists", color: "text-primary" },
-    { value: "25", label: "Research Fields", color: "text-secondary" },
-    { value: "10,000+", label: "Publications", color: "text-accent" },
-    { value: "150+", label: "Awards & Honors", color: "text-green-500" },
+    { value: "500+", label: "Mulheres Cientistas", color: "text-primary" },
+    { value: "25", label: "Áreas de Pesquisa", color: "text-secondary" },
+    { value: "10,000+", label: "Publicações", color: "text-accent" },
+    { value: "150+", label: "Prêmios e Honrarias", color: "text-green-500" },
   ];
 
   return (
