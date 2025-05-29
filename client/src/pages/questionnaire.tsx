@@ -10,7 +10,7 @@ import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import LikertScale from "@/components/ui/likert-scale";
 
-export default function Questionnaire() {
+const Questionnaire = () => {
   const {
     currentSection,
     totalSections,
@@ -31,8 +31,8 @@ export default function Questionnaire() {
   const handleSaveProgress = () => {
     saveProgress();
     toast({
-      title: "Progress Saved",
-      description: "Your questionnaire progress has been saved successfully.",
+      title: "Progresso Salvo",
+      description: "O progresso do seu questionário foi salvo com sucesso.",
     });
   };
 
@@ -44,12 +44,12 @@ export default function Questionnaire() {
             <div className="mb-4">
               <i className="fas fa-check-circle text-green-500 text-6xl"></i>
             </div>
-            <h3 className="text-2xl font-bold text-green-600 mb-4">Thank You!</h3>
+            <h3 className="text-2xl font-bold text-green-600 mb-4">Obrigado!</h3>
             <p className="text-gray-600 mb-6">
-              Your responses have been submitted successfully. Thank you for contributing to our understanding of women's experiences in science.
+              Suas respostas foram enviadas com sucesso. Obrigado por contribuir para nossa compreensão das experiências das mulheres na ciência.
             </p>
             <Button onClick={startNewSurvey} className="bg-primary hover:bg-indigo-700">
-              Start New Survey
+              Iniciar Novo Questionário
             </Button>
           </div>
         </div>
@@ -61,17 +61,17 @@ export default function Questionnaire() {
     <section className="py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Personal Research Survey</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Pesquisa Pessoal</h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Help us understand the experiences and perspectives of women in science through this comprehensive survey.
+            Ajude-nos a entender as experiências e perspectivas das mulheres na ciência através desta pesquisa abrangente.
           </p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between text-sm text-gray-600 mb-2">
-            <span>Progress</span>
-            <span>{currentSection} of {totalSections} sections</span>
+            <span>Progresso</span>
+            <span>{currentSection} de {totalSections} seções</span>
           </div>
           <Progress value={progressPercentage} className="h-2" />
         </div>
@@ -80,49 +80,49 @@ export default function Questionnaire() {
           {/* Section 1: Personal Background */}
           {currentSection === 1 && (
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Personal Background</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-primary">Informações Pessoais</h3>
               <div className="space-y-6">
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">What is your current career stage?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Qual é o seu estágio atual de carreira?</Label>
                   <Select value={responses.careerStage} onValueChange={(value) => updateResponse('careerStage', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select your career stage" />
+                      <SelectValue placeholder="Selecione seu estágio de carreira" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="undergraduate">Undergraduate Student</SelectItem>
-                      <SelectItem value="graduate">Graduate Student</SelectItem>
-                      <SelectItem value="postdoc">Postdoctoral Researcher</SelectItem>
-                      <SelectItem value="early-career">Early Career Professional</SelectItem>
-                      <SelectItem value="mid-career">Mid-Career Professional</SelectItem>
-                      <SelectItem value="senior">Senior Professional</SelectItem>
+                      <SelectItem value="undergraduate">Estudante de Graduação</SelectItem>
+                      <SelectItem value="graduate">Estudante de Pós-Graduação</SelectItem>
+                      <SelectItem value="postdoc">Pesquisador de Pós-Doutorado</SelectItem>
+                      <SelectItem value="early-career">Profissional em Início de Carreira</SelectItem>
+                      <SelectItem value="mid-career">Profissional em Meia-Carreira</SelectItem>
+                      <SelectItem value="senior">Profissional Sênior</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">Which field of science do you work in or study?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Em qual área da ciência você trabalha ou estuda?</Label>
                   <Select value={responses.scienceField} onValueChange={(value) => updateResponse('scienceField', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select your field" />
+                      <SelectValue placeholder="Selecione sua área" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="biology">Biology/Life Sciences</SelectItem>
-                      <SelectItem value="chemistry">Chemistry</SelectItem>
-                      <SelectItem value="physics">Physics</SelectItem>
-                      <SelectItem value="engineering">Engineering</SelectItem>
-                      <SelectItem value="medicine">Medicine/Health Sciences</SelectItem>
-                      <SelectItem value="computer-science">Computer Science</SelectItem>
-                      <SelectItem value="environmental">Environmental Science</SelectItem>
-                      <SelectItem value="mathematics">Mathematics</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="biology">Biologia/Ciências da Vida</SelectItem>
+                      <SelectItem value="chemistry">Química</SelectItem>
+                      <SelectItem value="physics">Física</SelectItem>
+                      <SelectItem value="engineering">Engenharia</SelectItem>
+                      <SelectItem value="medicine">Medicina/Ciências da Saúde</SelectItem>
+                      <SelectItem value="computer-science">Ciência da Computação</SelectItem>
+                      <SelectItem value="environmental">Ciência Ambiental</SelectItem>
+                      <SelectItem value="mathematics">Matemática</SelectItem>
+                      <SelectItem value="other">Outra</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">What initially inspired you to pursue science?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">O que te inspirou a seguir a carreira científica?</Label>
                   <Textarea
-                    placeholder="Share your inspiration story..."
+                    placeholder="Compartilhe sua história de inspiração..."
                     value={responses.inspiration}
                     onChange={(e) => updateResponse('inspiration', e.target.value)}
                     className="h-24"
@@ -135,18 +135,18 @@ export default function Questionnaire() {
           {/* Section 2: Challenges and Barriers */}
           {currentSection === 2 && (
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Challenges and Barriers</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-primary">Desafios e Barreiras</h3>
               <div className="space-y-6">
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-3">What challenges have you faced as a woman in science? (Select all that apply)</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-3">Quais desafios você enfrentou como mulher na ciência? (Marque todas as opções que se aplicam)</Label>
                   <div className="grid md:grid-cols-2 gap-3">
                     {[
-                      { value: "bias", label: "Gender bias" },
-                      { value: "work-life-balance", label: "Work-life balance" },
-                      { value: "mentorship", label: "Lack of mentorship" },
-                      { value: "funding", label: "Funding difficulties" },
-                      { value: "representation", label: "Lack of representation" },
-                      { value: "networking", label: "Limited networking opportunities" },
+                      { value: "bias", label: "Preconceito de gênero" },
+                      { value: "work-life-balance", label: "Equilíbrio entre trabalho e vida pessoal" },
+                      { value: "mentorship", label: "Falta de mentoria" },
+                      { value: "funding", label: "Dificuldades de financiamento" },
+                      { value: "representation", label: "Falta de representação" },
+                      { value: "networking", label: "Oportunidades limitadas de networking" },
                     ].map((challenge) => (
                       <div key={challenge.value} className="flex items-center space-x-2">
                         <Checkbox
@@ -161,23 +161,23 @@ export default function Questionnaire() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">How supportive is your current work/study environment?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Quão solidário é o seu ambiente de trabalho/estudo atual?</Label>
                   <RadioGroup value={responses.environmentSupport} onValueChange={(value) => updateResponse('environmentSupport', value)}>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="very-supportive" id="very-supportive" />
-                      <Label htmlFor="very-supportive">Very supportive</Label>
+                      <Label htmlFor="very-supportive">Muito solidário</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="somewhat-supportive" id="somewhat-supportive" />
-                      <Label htmlFor="somewhat-supportive">Somewhat supportive</Label>
+                      <Label htmlFor="somewhat-supportive">Moderadamente solidário</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="neutral" id="neutral" />
-                      <Label htmlFor="neutral">Neutral</Label>
+                      <Label htmlFor="neutral">Neutro</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="unsupportive" id="unsupportive" />
-                      <Label htmlFor="unsupportive">Unsupportive</Label>
+                      <Label htmlFor="unsupportive">Pouco ou nada solidário</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -188,30 +188,30 @@ export default function Questionnaire() {
           {/* Section 3: Role Models and Mentorship */}
           {currentSection === 3 && (
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Role Models and Mentorship</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-primary">Modelos e Mentoria</h3>
               <div className="space-y-6">
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">Do you have female role models in science?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Você tem modelos femininos na ciência?</Label>
                   <RadioGroup value={responses.hasRoleModels} onValueChange={(value) => updateResponse('hasRoleModels', value)}>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="yes" id="role-models-yes" />
-                      <Label htmlFor="role-models-yes">Yes</Label>
+                      <Label htmlFor="role-models-yes">Sim</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="no" id="role-models-no" />
-                      <Label htmlFor="role-models-no">No</Label>
+                      <Label htmlFor="role-models-no">Não</Label>
                     </div>
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="few" id="role-models-few" />
-                      <Label htmlFor="role-models-few">Very few</Label>
+                      <Label htmlFor="role-models-few">Muito poucos</Label>
                     </div>
                   </RadioGroup>
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">Who are your scientific inspirations? (Name specific people or describe qualities)</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Quem são suas inspirações científicas? (Nomeie pessoas específicas ou descreva qualidades)</Label>
                   <Textarea
-                    placeholder="Tell us about your scientific inspirations..."
+                    placeholder="Conte-nos sobre suas inspirações científicas..."
                     value={responses.inspirations}
                     onChange={(e) => updateResponse('inspirations', e.target.value)}
                     className="h-24"
@@ -219,17 +219,17 @@ export default function Questionnaire() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">How important is mentorship in your career development?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Quão importante é a mentoria no seu desenvolvimento profissional?</Label>
                   <Select value={responses.mentorshipImportance} onValueChange={(value) => updateResponse('mentorshipImportance', value)}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select importance level" />
+                      <SelectValue placeholder="Selecione o nível de importância" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="extremely">Extremely important</SelectItem>
-                      <SelectItem value="very">Very important</SelectItem>
-                      <SelectItem value="moderately">Moderately important</SelectItem>
-                      <SelectItem value="slightly">Slightly important</SelectItem>
-                      <SelectItem value="not">Not important</SelectItem>
+                      <SelectItem value="extremely">Extremamente importante</SelectItem>
+                      <SelectItem value="very">Muito importante</SelectItem>
+                      <SelectItem value="moderately">Moderadamente importante</SelectItem>
+                      <SelectItem value="slightly">Pouco importante</SelectItem>
+                      <SelectItem value="not">Nada importante</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -240,12 +240,12 @@ export default function Questionnaire() {
           {/* Section 4: Future Goals */}
           {currentSection === 4 && (
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Future Goals and Aspirations</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-primary">Objetivos e Aspirações Futuras</h3>
               <div className="space-y-6">
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">What are your primary career goals for the next 5 years?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Quais são seus principais objetivos profissionais para os próximos 5 anos?</Label>
                   <Textarea
-                    placeholder="Describe your career aspirations..."
+                    placeholder="Descreva suas aspirações profissionais..."
                     value={responses.careerGoals}
                     onChange={(e) => updateResponse('careerGoals', e.target.value)}
                     className="h-24"
@@ -253,15 +253,15 @@ export default function Questionnaire() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-3">Which areas would you like to see more women represented in? (Select all that apply)</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-3">Em quais áreas você gostaria de ver mais mulheres representadas? (Marque todas as opções que se aplicam)</Label>
                   <div className="grid md:grid-cols-2 gap-3">
                     {[
-                      { value: "leadership", label: "Leadership positions" },
-                      { value: "research", label: "Research teams" },
-                      { value: "industry", label: "Industry positions" },
-                      { value: "academia", label: "Academic faculty" },
-                      { value: "policy", label: "Science policy" },
-                      { value: "entrepreneurship", label: "Entrepreneurship" },
+                      { value: "leadership", label: "Cargos de liderança" },
+                      { value: "research", label: "Equipes de pesquisa" },
+                      { value: "industry", label: "Cargos na indústria" },
+                      { value: "academia", label: "Faculdade acadêmica" },
+                      { value: "policy", label: "Política científica" },
+                      { value: "entrepreneurship", label: "Empreendedorismo" },
                     ].map((area) => (
                       <div key={area.value} className="flex items-center space-x-2">
                         <Checkbox
@@ -281,12 +281,12 @@ export default function Questionnaire() {
           {/* Section 5: Work-Life Integration */}
           {currentSection === 5 && (
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-primary">Work-Life Integration</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-primary">Integração Trabalho-Vida Pessoal</h3>
               <div className="space-y-6">
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">How do you manage work-life balance in your scientific career?</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">Como você gerencia o equilíbrio entre trabalho e vida pessoal na sua carreira científica?</Label>
                   <Textarea
-                    placeholder="Share your strategies and experiences..."
+                    placeholder="Compartilhe suas estratégias e experiências..."
                     value={responses.workLifeBalance}
                     onChange={(e) => updateResponse('workLifeBalance', e.target.value)}
                     className="h-24"
@@ -294,15 +294,15 @@ export default function Questionnaire() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-3">What support systems are most important to you? (Select all that apply)</Label>
+                  <Label className="text-sm font-medium text-gray-700 mb-3">Quais sistemas de apoio são mais importantes para você? (Marque todas as opções que se aplicam)</Label>
                   <div className="grid md:grid-cols-2 gap-3">
                     {[
-                      { value: "family", label: "Family support" },
-                      { value: "colleagues", label: "Supportive colleagues" },
-                      { value: "flexible-work", label: "Flexible work arrangements" },
-                      { value: "childcare", label: "Childcare support" },
-                      { value: "mental-health", label: "Mental health resources" },
-                      { value: "professional-networks", label: "Professional networks" },
+                      { value: "family", label: "Apoio da família" },
+                      { value: "colleagues", label: "Colegas de trabalho solidários" },
+                      { value: "flexible-work", label: "Horários de trabalho flexíveis" },
+                      { value: "childcare", label: "Apoio à childcare" },
+                      { value: "mental-health", label: "Recursos de saúde mental" },
+                      { value: "professional-networks", label: "Redes profissionais" },
                     ].map((support) => (
                       <div key={support.value} className="flex items-center space-x-2">
                         <Checkbox
@@ -492,21 +492,21 @@ export default function Questionnaire() {
               onClick={goToPreviousSection}
               className={currentSection === 1 ? "invisible" : ""}
             >
-              <i className="fas fa-arrow-left mr-2"></i>Previous
+              <i className="fas fa-arrow-left mr-2"></i>Anterior
             </Button>
             
             <div className="flex space-x-4 ml-auto">
               <Button variant="outline" onClick={handleSaveProgress} className="bg-secondary hover:bg-cyan-600 text-white">
-                <i className="fas fa-save mr-2"></i>Save Progress
+                <i className="fas fa-save mr-2"></i>Salvar Progresso
               </Button>
               
               {currentSection < totalSections ? (
                 <Button onClick={goToNextSection} className="bg-primary hover:bg-indigo-700">
-                  Next<i className="fas fa-arrow-right ml-2"></i>
+                  Próximo<i className="fas fa-arrow-right ml-2"></i>
                 </Button>
               ) : (
                 <Button onClick={submitQuestionnaire} className="bg-accent hover:bg-pink-600">
-                  <i className="fas fa-paper-plane mr-2"></i>Submit Survey
+                  <i className="fas fa-paper-plane mr-2"></i>Enviar Questionário
                 </Button>
               )}
             </div>
@@ -515,4 +515,6 @@ export default function Questionnaire() {
       </div>
     </section>
   );
-}
+};
+
+export default Questionnaire;
