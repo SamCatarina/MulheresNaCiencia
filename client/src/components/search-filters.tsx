@@ -1,5 +1,11 @@
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
 
@@ -68,7 +74,7 @@ export default function SearchFilters({
               />
             </div>
           </div>
-          
+
           <Select value={selectedField} onValueChange={onFieldChange}>
             <SelectTrigger className="w-full lg:w-[200px] h-11">
               <SelectValue placeholder="Todas as Áreas" />
@@ -82,7 +88,10 @@ export default function SearchFilters({
             </SelectContent>
           </Select>
 
-          <Select value={selectedInstitution} onValueChange={onInstitutionChange}>
+          <Select
+            value={selectedInstitution}
+            onValueChange={onInstitutionChange}
+          >
             <SelectTrigger className="w-full lg:w-[200px] h-11">
               <SelectValue placeholder="Todas as Instituições" />
             </SelectTrigger>
@@ -107,9 +116,9 @@ export default function SearchFilters({
               <Badge
                 key={theme}
                 variant={selectedThemes.includes(theme) ? "default" : "outline"}
-                className={`cursor-pointer transition-all hover:shadow-md ${
-                  selectedThemes.includes(theme) 
-                    ? "bg-primary text-white hover:bg-primary/90" 
+                className={`text-base cursor-pointer transition-all hover:shadow-md ${
+                  selectedThemes.includes(theme)
+                    ? "bg-primary  hover:bg-primary/90"
                     : "hover:bg-gray-100"
                 }`}
                 onClick={() => onThemeToggle(theme)}
@@ -123,7 +132,8 @@ export default function SearchFilters({
           </div>
           {selectedThemes.length > 0 && (
             <div className="mt-3 text-sm text-gray-600">
-              <span className="font-medium">{selectedThemes.length}</span> tema(s) selecionado(s)
+              <span className="font-medium">{selectedThemes.length}</span>{" "}
+              tema(s) selecionado(s)
             </div>
           )}
         </div>

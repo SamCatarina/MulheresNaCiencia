@@ -3,13 +3,12 @@ export default function StatsSection() {
     { value: "500+", label: "Mulheres Cientistas", color: "text-primary" },
     { value: "25", label: "Áreas de Pesquisa", color: "text-secondary" },
     { value: "10,000+", label: "Publicações", color: "text-accent" },
-    { value: "150+", label: "Prêmios e Honrarias", color: "text-green-500" },
   ];
 
   return (
     <section className="bg-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 text-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
           {stats.map((stat, index) => (
             <div key={index} className="p-6">
               <div className={`text-4xl font-bold ${stat.color} mb-2`}>
