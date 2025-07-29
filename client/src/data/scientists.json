@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Maria Rodriguez",
+    "field": "Biomedical Engineering",
+    "institution": "MIT",
+    "image": "scientist01.png",
+    "research": "Pioneer in developing AI-driven prosthetics that respond to neural signals",
+    "researchThemes": [
+      "Neuroplasticity",
+      "Brain-Computer Interfaces",
+      "Prosthetic Technology",
+      "Neural Engineering"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A", "link": "https://example.com/pub1" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Dr. Sarah Chen",
+    "field": "Climate Science",
+    "institution": "Stanford University",
+    "image": "scientist02.png",
+    "research": "Leading researcher in Arctic ice melting patterns and ocean temperature modeling",
+    "researchThemes": [
+      "Climate Change",
+      "Ocean Dynamics",
+      "Ice Sheet Modeling",
+      "Global Warming"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Dr. Amira Hassan",
+    "field": "Genetic Engineering",
+    "institution": "Harvard Medical",
+    "image": "scientist03.png",
+    "research": "Breakthrough research in CRISPR gene therapy for rare genetic disorders",
+    "researchThemes": [
+      "CRISPR Technology",
+      "Gene Therapy",
+      "Rare Diseases",
+      "Precision Medicine"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Dr. Elena Popov",
+    "field": "Biochemistry",
+    "institution": "Yale University",
+    "image": "scientist04.png",
+    "research": "Protein folding mechanisms and therapeutic applications",
+    "researchThemes": [
+      "Protein Structure",
+      "Drug Discovery",
+      "Molecular Biology",
+      "Therapeutic Development"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Dr. Priya Sharma",
+    "field": "Astrophysics",
+    "institution": "Caltech",
+    "image": "scientist01.png",
+    "research": "Black hole physics and gravitational wave detection",
+    "researchThemes": [
+      "Black Holes",
+      "Gravitational Waves",
+      "Space Physics",
+      "Cosmology"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Dr. Lisa Wang",
+    "field": "Computer Science",
+    "institution": "Google Research",
+    "image": "scientist02.png",
+    "research": "Natural language processing and ethical AI development",
+    "researchThemes": [
+      "Artificial Intelligence",
+      "Natural Language Processing",
+      "Machine Learning",
+      "Ethics in AI"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Dr. Jessica Torres",
+    "field": "Marine Biology",
+    "institution": "Woods Hole",
+    "image": "scientist03.png",
+    "research": "Coral reef conservation and climate change adaptation",
+    "researchThemes": [
+      "Marine Ecosystems",
+      "Coral Conservation",
+      "Climate Adaptation",
+      "Ocean Biodiversity"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Dr. Fatima Al-Rashid",
+    "field": "Quantum Physics",
+    "institution": "Oxford University",
+    "image": "scientist04.png",
+    "research": "Quantum computing applications in cryptography",
+    "researchThemes": [
+      "Quantum Computing",
+      "Quantum Cryptography",
+      "Information Security",
+      "Quantum Mechanics"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Dr. Anna Kowalski",
+    "field": "Biomedical Engineering",
+    "institution": "Johns Hopkins",
+    "image": "scientist01.png",
+    "research": "Neural interfaces for paralysis recovery",
+    "researchThemes": [
+      "Neural Interfaces",
+      "Paralysis Recovery",
+      "Rehabilitation Technology",
+      "Biomedical Devices"
+    ],
+    "publications": [
+      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
+      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
+      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+    ]
+  }
+]

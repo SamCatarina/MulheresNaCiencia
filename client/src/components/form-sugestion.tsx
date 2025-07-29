@@ -15,12 +15,14 @@ import { useToast } from "@/hooks/use-toast";
 const initialForm = {
   name: "",
   field: "",
+  fieldOther: "",
   institution: "",
   achievement: "",
   researchThemes: "",
   link: "",
   reason: "",
 };
+
 
 export default function SuggestScientist() {
   const [form, setForm] = useState(initialForm);
@@ -31,20 +33,52 @@ export default function SuggestScientist() {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast({
-      title: "Sugestão enviada!",
-      description:
-        "Obrigado por sugerir uma cientista. Sua contribuição será analisada.",
-    });
-    setForm(initialForm);
+
+    try {
+      const response = await fetch(
+        "https://script.google.com/macros/s/AKfycbzKbNPuhDhCwGG3Csz_Nw1WDkYoTMgJms6IEKA7eBTuMcYx8qHBnP3yvmoiTs13lGeUTA/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({
+            name: form.name,
+            field: form.field,
+            fieldOther: form.fieldOther,
+            institution: form.institution,
+            achievement: form.achievement,
+            researchThemes: form.researchThemes,
+            link: form.link,
+            reason: form.reason,
+          }),
+        }
+      );
+
+      setSubmitted(true);
+      toast({
+        title: "Sugestão enviada!",
+        description:
+          "Obrigado por sugerir uma cientista. Sua contribuição será analisada.",
+      });
+      setForm(initialForm);
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+      toast({
+        title: "Erro ao enviar sugestão",
+        description: "Tente novamente em instantes.",
+        variant: "destructive",
+      });
+    }
   };
+
 
   if (submitted) {
     return (
-      <section  className="py-16">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-sm p-8 text-center">
             <div className="mb-4">
@@ -123,7 +157,23 @@ export default function SuggestScientist() {
                 <SelectItem value="Outra">Outra</SelectItem>
               </SelectContent>
             </Select>
+
+            {form.field === "Outra" && (
+              <div className="mt-4">
+                <Label className="text-sm font-medium text-gray-700 mb-2">
+                  Qual é a área?
+                </Label>
+                <Input
+                  value={form.fieldOther || ""}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, fieldOther: e.target.value }))
+                  }
+                  placeholder="Digite a área de atuação"
+                />
+              </div>
+            )}
           </div>
+
           <div>
             <Label className="text-sm font-medium text-gray-700 mb-2">
               Instituição

@@ -1,15 +1,6 @@
-interface Scientist {
-  id: number;
-  name: string;
-  field: string;
-  institution: string;
-  achievement: string;
-  image: string;
-  research?: string;
-  researchThemes?: string[];
-  publications?: number;
-  awards?: string[];
-}
+import { useState } from "react";
+import { Link } from "wouter";
+import ScientistModal, { Scientist } from "./scientists-modal";
 
 interface ScientistCardProps {
   scientist: Scientist;
@@ -20,6 +11,8 @@ export default function ScientistCard({
   scientist,
   featured = false,
 }: ScientistCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   if (featured) {
     return (
       <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
@@ -38,9 +31,6 @@ export default function ScientistCard({
         <div className="p-6">
           <h3 className="text-xl font-semibold mb-2">{scientist.name}</h3>
           <p className="text-primary font-medium mb-2">{scientist.field}</p>
-          <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-            {scientist.achievement}
-          </p>
 
           {scientist.researchThemes && (
             <div className="mb-4">
@@ -67,7 +57,7 @@ export default function ScientistCard({
               <span className="text-gray-500">{scientist.institution}</span>
               {scientist.publications && (
                 <span className="text-gray-400 text-xs">
-                  {scientist.publications} publicações
+                  {scientist.publications.length} publicações
                 </span>
               )}
             </div>
@@ -88,14 +78,6 @@ export default function ScientistCard({
           alt={scientist.name}
           className="w-full h-48 object-cover rounded-lg"
         />
-        {scientist.awards && scientist.awards.length > 0 && (
-          <div className="absolute top-2 left-2">
-            <div className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-xs font-medium border border-blue-200">
-              <i className="fas fa-award mr-1"></i>
-              Premiada
-            </div>
-          </div>
-        )}
       </div>
 
       <h3 className="font-semibold text-lg mb-1">{scientist.name}</h3>
@@ -117,19 +99,24 @@ export default function ScientistCard({
         </div>
       )}
 
-      <p className="text-gray-700 text-xs mb-3 line-clamp-2">
-        {scientist.research || scientist.achievement}
-      </p>
 
       <div className="flex items-center justify-between">
         {scientist.publications && (
           <span className="text-gray-400 text-xs">
-            {scientist.publications} pub.
+            {scientist.publications.length} pub.
           </span>
         )}
-        <button className="text-primary text-sm font-medium hover:underline">
+        <button
+          className="text-primary text-sm font-medium hover:underline"
+          onClick={() => setIsOpen(true)}
+        >
           Ver Detalhes
         </button>
+        <ScientistModal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          scientist={scientist}
+        />
       </div>
     </div>
   );

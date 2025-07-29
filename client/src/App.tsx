@@ -17,13 +17,12 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/scientists" component={Scientists} />
         <Route path="/questionnaire" component={Questionnaire} />
+        <Route path="/scientists/:id" component={Scientists} />
         <Route component={NotFound} />
       </Switch>
       <footer className="bg-neutral-900  py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          </div>
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"></div>
         </div>
       </footer>
     </div>

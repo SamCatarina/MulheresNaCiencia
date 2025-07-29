@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
+import { useState } from "react";
 
 interface SearchFiltersProps {
   searchTerm: string;
@@ -57,10 +58,15 @@ export default function SearchFilters({
     "Woods Hole",
   ];
 
+  const [showAllThemes, setShowAllThemes] = useState(false);
+
+  const displayedThemes = showAllThemes
+    ? availableThemes
+    : availableThemes.slice(0, 30);
+
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
       <div className="flex flex-col gap-6">
-        {/* Search and main filters */}
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">
@@ -105,30 +111,42 @@ export default function SearchFilters({
           </Select>
         </div>
 
-        {/* Research themes section */}
         <div>
           <h4 className="font-semibold text-gray-700 mb-3 flex items-center">
             <i className="fas fa-tags text-primary mr-2"></i>
             Temas de Pesquisa
           </h4>
-          <div className="flex flex-wrap gap-2">
-            {availableThemes.map((theme) => (
-              <Badge
-                key={theme}
-                variant={selectedThemes.includes(theme) ? "default" : "outline"}
-                className={`text-base cursor-pointer transition-all hover:shadow-md ${
-                  selectedThemes.includes(theme)
-                    ? "bg-primary  hover:bg-primary/90"
-                    : "hover:bg-gray-100"
-                }`}
-                onClick={() => onThemeToggle(theme)}
+          <div className="flex flex-col items-center">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {displayedThemes.map((theme) => (
+                <Badge
+                  key={theme}
+                  variant={
+                    selectedThemes.includes(theme) ? "default" : "outline"
+                  }
+                  className={`text-base cursor-pointer transition-all hover:shadow-md ${
+                    selectedThemes.includes(theme)
+                      ? "bg-primary hover:bg-primary/90"
+                      : "hover:bg-gray-100"
+                  }`}
+                  onClick={() => onThemeToggle(theme)}
+                >
+                  {theme}
+                  {selectedThemes.includes(theme) && (
+                    <X className="ml-1 h-3 w-3" />
+                  )}
+                </Badge>
+              ))}
+            </div>
+
+            {!showAllThemes && availableThemes.length > 30 && (
+              <button
+                className="mt-4 text-xs text-gray-600 hover:underline"
+                onClick={() => setShowAllThemes(true)}
               >
-                {theme}
-                {selectedThemes.includes(theme) && (
-                  <X className="ml-1 h-3 w-3" />
-                )}
-              </Badge>
-            ))}
+                Ver todos os temas
+              </button>
+            )}
           </div>
           {selectedThemes.length > 0 && (
             <div className="mt-3 text-sm text-gray-600">

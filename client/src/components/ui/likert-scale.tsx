@@ -19,30 +19,33 @@ const defaultOptions = [
   { value: "5", label: "Concordo totalmente" },
 ];
 
-export default function LikertScale({ 
-  question, 
-  value, 
-  onValueChange, 
-  options = defaultOptions 
+export default function LikertScale({
+  question,
+  value,
+  onValueChange,
+  options = defaultOptions,
 }: LikertScaleProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       <Label className="text-sm font-medium text-gray-700">{question}</Label>
-      <RadioGroup value={value} onValueChange={onValueChange} className="grid grid-cols-1 gap-3">
+      <RadioGroup
+        value={value}
+        onValueChange={onValueChange}
+        className="flex flex-wrap gap-4"
+      >
         {options.map((option) => (
-          <div key={option.value} className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors">
-            <RadioGroupItem 
-              value={option.value} 
+          <label
+            key={option.value}
+            htmlFor={`${question}-${option.value}`}
+            className="flex items-center space-x-2 cursor-pointer"
+          >
+            <RadioGroupItem
+              value={option.value}
               id={`${question}-${option.value}`}
               className="text-primary"
             />
-            <Label 
-              htmlFor={`${question}-${option.value}`} 
-              className="flex-1 cursor-pointer text-sm"
-            >
-              {option.label}
-            </Label>
-          </div>
+            <span className="text-sm">{option.label}</span>
+          </label>
         ))}
       </RadioGroup>
     </div>

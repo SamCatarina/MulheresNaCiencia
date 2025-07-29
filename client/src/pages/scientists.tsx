@@ -4,6 +4,7 @@ import ScientistCard from "@/components/scientist-card";
 import SearchFilters from "@/components/search-filters";
 import { Button } from "@/components/ui/button";
 import SuggestScientist from "@/components/form-sugestion";
+import { useRoute } from "wouter";
 
 export default function Scientists() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,6 +14,8 @@ export default function Scientists() {
   );
   const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [match, params] = useRoute("/scientists/:id");
+  const id = params?.id;
 
   const availableThemes = getAllResearchThemes();
 
@@ -26,9 +29,6 @@ export default function Scientists() {
     return allScientists.filter((scientist) => {
       const matchesSearch =
         scientist.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        scientist.achievement
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) ||
         (scientist.research &&
           scientist.research
             .toLowerCase()

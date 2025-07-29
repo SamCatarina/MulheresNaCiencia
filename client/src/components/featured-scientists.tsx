@@ -1,4 +1,4 @@
-import { featuredScientists } from "@/data/scientists";
+import { allScientists } from "@/data/scientists";
 import ScientistCard from "./scientist-card";
 
 export default function FeaturedScientists() {
@@ -15,10 +15,12 @@ export default function FeaturedScientists() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {featuredScientists.map((scientist) => (
-            <ScientistCard key={scientist.id} scientist={scientist} />
-          ))}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {allScientists
+            .slice(-4)
+            .map((scientist) => (
+              <ScientistCard key={scientist.id} scientist={scientist} />
+            ))}
         </div>
       </div>
     </section>
