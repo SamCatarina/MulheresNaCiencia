@@ -1,4 +1,4 @@
-import { Scientist } from "./components/scientists-modal";
+import { Scientist } from "../components/scientists-modal";
 import scientistsJson from "./scientists.json";
 import scientist01 from "./images/scientist01.png";
 import scientist02 from "./images/scientist02.png";

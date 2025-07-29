@@ -1,4 +1,7 @@
-import { useQuestionnaire } from "../hooks/use-questionnaire";
+import {
+  useQuestionnaire,
+  QuestionnaireResponses,
+} from "../hooks/use-questionnaire";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -33,8 +36,8 @@ const Questionnaire = () => {
   } = useQuestionnaire();
 
   // Campos obrigatórios por seção
-  const requiredFields = {
-    1: [
+  const requiredFields: { [key: string]: string[] } = {
+    "1": [
       "fullName",
       "universityType",
       "courseAreaGeneral",
@@ -44,7 +47,7 @@ const Questionnaire = () => {
       "childhoodHobbiesTime",
       "childhoodMainActivities",
     ],
-    2: [
+    "2": [
       "currentCourseDesired",
       "currentCourseIdentification",
       "currentCourseAreaMatch",
@@ -61,7 +64,7 @@ const Questionnaire = () => {
       "stemCareerEverInterest",
       "stemCareerDesistanceReason",
     ],
-    3: [
+    "3": [
       "schoolExactInterestByGender",
       "preCollegeExactInterestLevel",
       "familySchoolPerformanceValue",
@@ -74,7 +77,7 @@ const Questionnaire = () => {
       "feelingExcludedTech",
       "feelingExcludedExact",
     ],
-    4: [
+    "4": [
       "familyStudyIncentive",
       "activityGenderRestriction",
       "professionsByGenderOpinion",
@@ -83,11 +86,13 @@ const Questionnaire = () => {
   };
 
   // Verifica se todos os campos obrigatórios da seção estão preenchidos
-  const isSectionValid = requiredFields[currentSection].every(
+  // Permitir indexação por string (corrige erro TS)
+  const responsesAny = responses as { [key: string]: any };
+  const isSectionValid = requiredFields[String(currentSection)].every(
     (field) =>
-      responses[field] !== "" &&
-      responses[field] !== undefined &&
-      responses[field] !== null
+      responsesAny[field] !== "" &&
+      responsesAny[field] !== undefined &&
+      responsesAny[field] !== null
   );
 
   const { toast } = useToast();
@@ -100,7 +105,11 @@ const Questionnaire = () => {
     });
   };
 
-  const reorder = (list, startIndex, endIndex) => {
+  const reorder = (
+    list: string[],
+    startIndex: number,
+    endIndex: number
+  ): string[] => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
@@ -138,7 +147,7 @@ const Questionnaire = () => {
         result.source.index,
         result.destination.index
       );
-      setMotives(reorderedMotives);
+      setMotives(reorderedMotives as string[]);
     };
 
     return (
