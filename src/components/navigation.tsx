@@ -62,7 +62,7 @@ export default function Navigation() {
                 {navItems.map((item) => (
                   <Link
                     key={item.path}
-                    href={item.path}
+                    href={"/MulheresNaCiencia/#" + item.path}
                     className={`transition-colors ${
                       isActive(item.path)
                         ? "text-primary font-medium"
