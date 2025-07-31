@@ -265,7 +265,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.universityType}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("universityType", value)
                     }
                   >
@@ -285,7 +285,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.courseAreaGeneral}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("courseAreaGeneral", value)
                     }
                   >
@@ -338,7 +338,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.parentsEducation}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("parentsEducation", value)
                     }
                   >
@@ -384,7 +384,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.basicSchoolType}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("basicSchoolType", value)
                     }
                   >
@@ -418,7 +418,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.childhoodHobbiesTime}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("childhoodHobbiesTime", value)
                     }
                   >
@@ -451,7 +451,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.childhoodMainActivities}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("childhoodMainActivities", value)
                     }
                   >
@@ -498,7 +498,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.currentCourseDesired}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("currentCourseDesired", value)
                     }
                   >
@@ -525,7 +525,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.currentCourseIdentification}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("currentCourseIdentification", value)
                     }
                   >
@@ -556,7 +556,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.currentCourseAreaMatch}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("currentCourseAreaMatch", value)
                     }
                   >
@@ -587,7 +587,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.currentCourseAreaIdentification}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("currentCourseAreaIdentification", value)
                     }
                   >
@@ -619,7 +619,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.familyInfluence}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("familyInfluence", value)
                     }
                   >
@@ -653,7 +653,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.societalContribution}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("societalContribution", value)
                     }
                   >
@@ -689,7 +689,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.financialReturn}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("financialReturn", value)
                     }
                   >
@@ -720,7 +720,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.financialReturnTime}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("financialReturnTime", value)
                     }
                   >
@@ -751,7 +751,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.courseAvailability}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("courseAvailability", value)
                     }
                   >
@@ -782,7 +782,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.familyInCourseArea}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("familyInCourseArea", value)
                     }
                   >
@@ -814,7 +814,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.quickReturnFields}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("quickReturnFields", value)
                     }
                   >
@@ -867,7 +867,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.stemCareerEverInterest}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("stemCareerEverInterest", value)
                     }
                   >
@@ -891,7 +891,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.stemCareerDesistanceReason}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("stemCareerDesistanceReason", value)
                     }
                   >
@@ -945,7 +945,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.schoolExactInterestByGender}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("schoolExactInterestByGender", value)
                     }
                   >
@@ -970,7 +970,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.preCollegeExactInterestLevel}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("preCollegeExactInterestLevel", value)
                     }
                   >
@@ -1001,7 +1001,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.familySchoolPerformanceValue}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("familySchoolPerformanceValue", value)
                     }
                   >
@@ -1039,7 +1039,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.teacherPerformanceValue}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("teacherPerformanceValue", value)
                     }
                   >
@@ -1092,7 +1092,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.admiredExactTeachersGender}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("admiredExactTeachersGender", value)
                     }
                   >
@@ -1125,7 +1125,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.lostInterestExactSciences}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("lostInterestExactSciences", value)
                     }
                   >
@@ -1156,7 +1156,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.mainReasonLeavingSTEM}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("mainReasonLeavingSTEM", value)
                     }
                   >
@@ -1196,7 +1196,7 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.feltSTEMNotForMeEver}
-                    onValueChange={(value) =>
+                    onValueChange={(value: any) =>
                       updateResponse("feltSTEMNotForMeEver", value)
                     }
                   >

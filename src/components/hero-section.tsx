@@ -12,7 +12,7 @@ export default function HeroSection() {
             Descubra as contribuições notáveis de mulheres cientistas que estão
             moldando nosso mundo através da inovação, pesquisa e descoberta.
           </p>
-          <Link href="/scientists">
+          <Link href="#/scientists">
             <button className="bg-white px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105">
               Explorar Cientistas
             </button>

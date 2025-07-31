@@ -14,7 +14,7 @@ export default function Scientists() {
   );
   const [selectedThemes, setSelectedThemes] = useState<string[]>([]);
   const [visibleCount, setVisibleCount] = useState(6);
-  const [match, params] = useRoute("/scientists/:id");
+  const [match, params] = useRoute("#/scientists/:id");
   const id = params?.id;
 
   const availableThemes = getAllResearchThemes();
