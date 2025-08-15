@@ -18,6 +18,7 @@ import { useToast } from "../hooks/use-toast";
 import LikertScale from "../components/ui/likert-scale";
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { SquareCheckbox } from "../components/ui/roundCheckbox";
 
 const Questionnaire = () => {
   const {
@@ -85,6 +86,24 @@ const Questionnaire = () => {
     ],
   };
 
+  const activities = [
+    { label: "Ler livros ou revistas", value: "ler-livros" },
+    { label: "Brincar ao ar livre / esportes", value: "brincar-esportes" },
+    { label: "Jogar videogame ou usar computador", value: "jogar-videogame" },
+    {
+      label: "Desenhar, pintar ou fazer trabalhos manuais",
+      value: "desenhar-pintar",
+    },
+    {
+      label: "Programar, montar ou desmontar coisas",
+      value: "programar-montar",
+    },
+    {
+      label: "Estudar por conta própria (além da escola)",
+      value: "estudar-por-conta",
+    },
+  ];
+
   // Verifica se todos os campos obrigatórios da seção estão preenchidos
   // Permitir indexação por string (corrige erro TS)
   const responsesAny = responses as { [key: string]: any };
@@ -117,77 +136,81 @@ const Questionnaire = () => {
   };
 
   // Motivos do drag-and-drop persistidos no responses
-  const motivesDefault = [
-    "(A) Afinidade com a área / interesse pessoal pelos temas do curso",
-    "(B) Identificação com o tipo de profissional que atua na área",
-    "(C) Influência de familiares (pais, responsáveis, parentes)",
-    "(D) Influência de amigos(as) ou conhecidos(as) que também escolheram esse curso",
-    "(E) Pressão familiar para escolher determinada área",
-    "(F) Expectativa de boa remuneração ou estabilidade financeira",
-    "(G) Facilidade de acesso ao curso (proximidade, nota do Enem, bolsa, etc.)",
-    "(H) Poucas opções disponíveis no momento da escolha",
-    "(I) Indecisão: escolhi por não saber o que queria fazer",
-    "(J) Escolhi por já ter experiências anteriores (ex: curso técnico, estágio, trabalho)",
-  ];
+const motivesDefault = [
+  "Afinidade com a área / interesse pessoal pelos temas do curso",
+  "Identificação com o tipo de profissional que atua na área",
+  "Influência de familiares (pais, responsáveis, parentes)",
+  "Influência de amigos(as) ou conhecidos(as) que também escolheram esse curso",
+  "Pressão familiar para escolher determinada área",
+  "Expectativa de boa remuneração ou estabilidade financeira",
+  "Facilidade de acesso ao curso (proximidade, nota do Enem, bolsa, etc.)",
+  "Poucas opções disponíveis no momento da escolha",
+  "Indecisão: escolhi por não saber o que queria fazer",
+  "Escolhi por já ter experiências anteriores (ex: curso técnico, estágio, trabalho)",
+];
 
-  const motives =
+const CourseSelection = () => {
+  const selectedMotives =
     responses.motivesOrder && Array.isArray(responses.motivesOrder)
       ? responses.motivesOrder
-      : motivesDefault;
+      : [];
 
-  const setMotives = (newOrder: string[]) => {
-    updateResponse("motivesOrder", newOrder);
+  const unselectedMotives = motivesDefault.filter(
+    (motive) => !selectedMotives.includes(motive)
+  );
+
+  const handleClick = (motive: string) => {
+    let updated: string[];
+
+    if (selectedMotives.includes(motive)) {
+      // Se já está selecionado, remove da lista
+      updated = selectedMotives.filter((m) => m !== motive);
+    } else {
+      // Adiciona ao final da lista (último clique)
+      updated = [...selectedMotives, motive];
+    }
+
+    updateResponse("motivesOrder", updated);
   };
 
-  const CourseSelection = () => {
-    const onDragEnd = (result: any) => {
-      if (!result.destination) return;
-      const reorderedMotives = reorder(
-        motives,
-        result.source.index,
-        result.destination.index
-      );
-      setMotives(reorderedMotives as string[]);
-    };
+  return (
+    <div className="space-y-4">
+      <Label className="text-sm font-medium text-gray-700">
+        Quais foram os principais motivos que influenciaram sua escolha pelo
+        curso que você está cursando atualmente?
+        <br />
+        (Clique para elencar em ordem de importância — o 1º é o mais importante)
+      </Label>
 
-    return (
-      <div>
-        <Label className="text-sm font-medium text-gray-700 mb-2">
-          Quais foram os principais motivos que influenciaram sua escolha pelo
-          curso que você está cursando atualmente? (Arraste para classificar por
-          ordem de importância)
-        </Label>
+      <ul className="space-y-2">
+        {selectedMotives.map((motive, index) => (
+          <li
+            key={motive}
+            onClick={() => handleClick(motive)}
+            className="flex items-center gap-2 cursor-pointer border border-primary bg-primary/10 rounded-md px-3 py-2 hover:bg-primary/20 transition"
+          >
+            <span className="text-sm font-bold text-primary w-6">
+              {index + 1}.
+            </span>
+            <span className="text-sm text-gray-800">{motive}</span>
+          </li>
+        ))}
 
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided) => (
-              <ul
-                className="space-y-2"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {motives.map((motive: string, index: number) => (
-                  <Draggable key={motive} draggableId={motive} index={index}>
-                    {(provided) => (
-                      <li
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                      >
-                        {motive}
-                      </li>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-              </ul>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </div>
-    );
-  };
+        {unselectedMotives.map((motive) => (
+          <li
+            key={motive}
+            onClick={() => handleClick(motive)}
+            className="flex items-center gap-2 cursor-pointer border border-input rounded-md px-3 py-2 hover:bg-muted transition"
+          >
+            <span className="w-6" /> {/* Reservar espaço para o número */}
+            <span className="text-sm text-gray-800">{motive}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 
   if (isSubmitted) {
     return (
@@ -445,40 +468,38 @@ const Questionnaire = () => {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">
+                  <Label className="text-sm font-medium text-gray-700 mb-2 block">
                     Quais eram suas principais atividades de interesse na
                     infância e adolescência?
                   </Label>
-                  <Select
-                    value={responses.childhoodMainActivities}
-                    onValueChange={(value: any) =>
-                      updateResponse("childhoodMainActivities", value)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione uma ou mais opções..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="ler-livros">
-                        Ler livros ou revistas
-                      </SelectItem>
-                      <SelectItem value="brincar-esportes">
-                        Brincar ao ar livre / esportes
-                      </SelectItem>
-                      <SelectItem value="jogar-videogame">
-                        Jogar videogame ou usar computador
-                      </SelectItem>
-                      <SelectItem value="desenhar-pintar">
-                        Desenhar, pintar ou fazer trabalhos manuais
-                      </SelectItem>
-                      <SelectItem value="programar-montar">
-                        Programar, montar ou desmontar coisas
-                      </SelectItem>
-                      <SelectItem value="estudar-por-conta">
-                        Estudar por conta própria (além da escola)
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
+
+                  <div className="space-y-3">
+                    {activities.map((item) => (
+                      <label
+                        key={item.value}
+                        className="flex items-center space-x-3 text-sm text-gray-700"
+                      >
+                        <SquareCheckbox
+                          checked={responses.childhoodMainActivities?.includes(
+                            item.value
+                          )}
+                          onCheckedChange={(checked) => {
+                            const current =
+                              responses.childhoodMainActivities || [];
+                            const updated =
+                              checked === true
+                                ? [...current, item.value]
+                                : current.filter(
+                                    (v: string) => v !== item.value
+                                  );
+                            updateResponse("childhoodMainActivities", updated);
+                          }}
+                          value={item.value}
+                        />
+                        <span>{item.label}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

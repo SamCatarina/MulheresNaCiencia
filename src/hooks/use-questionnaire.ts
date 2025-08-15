@@ -9,7 +9,7 @@ export interface QuestionnaireResponses {
   parentsEducation: string;
   basicSchoolType: string;
   childhoodHobbiesTime: string;
-  childhoodMainActivities: string;
+  childhoodMainActivities: string[];
   // Seção 2
   currentCourseDesired: string;
   currentCourseIdentification: string;
@@ -57,7 +57,7 @@ const initialResponses: QuestionnaireResponses = {
   parentsEducation: "",
   basicSchoolType: "",
   childhoodHobbiesTime: "",
-  childhoodMainActivities: "",
+  childhoodMainActivities: [""],
   // Seção 2
   currentCourseDesired: "",
   currentCourseIdentification: "",
