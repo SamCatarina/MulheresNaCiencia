@@ -58,6 +58,7 @@ export default function SuggestScientist() {
           researchThemes: form.researchThemes,
           link: form.link,
           reason: form.reason,
+          suggesterName: form.suggesterName,
         }),
       });
 
@@ -247,7 +248,7 @@ export default function SuggestScientist() {
                 setQuerNomeNosAgradecimentos(value);
                 // limpa o campo se selecionar "Não"
                 if (value === "não") {
-                  handleChange("reason", "");
+                  handleChange("suggesterName", "");
                 }
               }}
               >

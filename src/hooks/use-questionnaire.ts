@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 export interface QuestionnaireResponses {
   // Seção 1
-  fullName: string;
+  gender: string;
   universityType: string;
   courseAreaGeneral: string;
   courseName: string;
@@ -50,20 +50,21 @@ export interface QuestionnaireResponses {
 
 const initialResponses: QuestionnaireResponses = {
   // Seção 1
-  fullName: "",
+  gender: "",
   universityType: "",
   courseAreaGeneral: "",
   courseName: "",
   parentsEducation: "",
   basicSchoolType: "",
   childhoodHobbiesTime: "",
-  childhoodMainActivities: [""],
+  childhoodMainActivities: [],
   // Seção 2
   currentCourseDesired: "",
   currentCourseIdentification: "",
   currentCourseAreaMatch: "",
   currentCourseAreaIdentification: "",
   familyInfluence: "",
+  motivesOrder: [],
   societalContribution: "",
   financialReturn: "",
   financialReturnTime: "",
@@ -91,18 +92,6 @@ const initialResponses: QuestionnaireResponses = {
   activityGenderRestriction: "",
   professionsByGenderOpinion: "",
   professionSuitabilityOpinion: "",
-  motivesOrder: [
-    "(A) Afinidade com a área / interesse pessoal pelos temas do curso",
-    "(B) Identificação com o tipo de profissional que atua na área",
-    "(C) Influência de familiares (pais, responsáveis, parentes)",
-    "(D) Influência de amigos(as) ou conhecidos(as) que também escolheram esse curso",
-    "(E) Pressão familiar para escolher determinada área",
-    "(F) Expectativa de boa remuneração ou estabilidade financeira",
-    "(G) Facilidade de acesso ao curso (proximidade, nota do Enem, bolsa, etc.)",
-    "(H) Poucas opções disponíveis no momento da escolha",
-    "(I) Indecisão: escolhi por não saber o que queria fazer",
-    "(J) Escolhi por já ter experiências anteriores (ex: curso técnico, estágio, trabalho)",
-  ],
 };
 
 export function useQuestionnaire() {

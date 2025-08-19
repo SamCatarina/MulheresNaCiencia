@@ -1,22 +1,40 @@
 [
   {
     "id": 1,
-    "name": "Dr. Maria Rodriguez",
-    "field": "Biomedical Engineering",
-    "institution": "MIT",
+    "name": "Jaqueline Goes de Jesus",
+    "field": "Biomedicina",
+    "institution": "Escola Bahiana de Medicina e Saúde Pública, EBMSP",
     "image": "scientist01.png",
-    "research": "Pioneer in developing AI-driven prosthetics that respond to neural signals",
+    "research": "Atua na área de virologia molecular, com ênfase no estudo de retrovírus humanos como o HTLV-1 e o HIV-1, investigando aspectos genéticos, mecanismos de infecção, interação vírus-hospedeiro e potenciais alvos terapêuticos.",
     "researchThemes": [
-      "Neuroplasticity",
-      "Brain-Computer Interfaces",
-      "Prosthetic Technology",
-      "Neural Engineering"
+      "Vírus HTLV-1",
+      "Retrovírus endógenos humanos",
+      "Genética viral e mutações",
+      "Proteínas virais",
+      "Infecção pelo HIV-1"
     ],
     "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A", "link": "https://example.com/pub1" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
+      {
+        "title": "Dynamics of Early Establishment of SARS-CoV-2 VOC Omicron Lineages in Minas Gerais, Brazil",
+        "year": 2023,
+        "journal": "Viruses-Basel",
+        "link": "https://www.mdpi.com/1999-4915/15/2/585"
+      },
+      {
+        "title": "Genetic differences of dengue virus 2 in patients with distinct clinical outcome",
+        "year": 2023,
+        "journal": "Brazilian Journal of Microbiology",
+        "link": "http://dx.doi.org/10.1007/s42770-023-01006-1"
+      },
+      {
+        "title": "Understanding Sabiá virus infections (Brazilian mammarenavirus)",
+        "year": 2022,
+        "journal": "Travel Medicine and Infectious Disease",
+        "link": "http://dx.doi.org/10.1016/j.tmaid.2022.102351"
+      }
+    ],
+    "lattes": "http://lattes.cnpq.br/5852030355340056"
+
   },
   {
     "id": 2,

@@ -8,7 +8,7 @@ export default function Navigation() {
   const navItems = [
     { path: "/", label: "Início" },
     { path: "/scientists", label: "Cientistas" },
-    {path: "/career", label: "Carreiras"},
+    //{path: "/career", label: "Carreiras"},
     { path: "/questionnaire", label: "Questionário" },
   ];
 

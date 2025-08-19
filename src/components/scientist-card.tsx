@@ -76,7 +76,7 @@ export default function ScientistCard({
         <img
           src={scientist.image}
           alt={scientist.name}
-          className="w-full h-48 object-cover rounded-lg"
+          className="w-full h-48 object-cover object-top rounded-lg"
         />
       </div>
 
@@ -98,7 +98,6 @@ export default function ScientistCard({
           </div>
         </div>
       )}
-
 
       <div className="flex items-center justify-between">
         {scientist.publications && (

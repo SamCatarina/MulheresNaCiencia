@@ -19,6 +19,7 @@ import LikertScale from "../components/ui/likert-scale";
 import { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { SquareCheckbox } from "../components/ui/roundCheckbox";
+import FooterSection from "../components/footer-section";
 
 const Questionnaire = () => {
   const {
@@ -39,7 +40,6 @@ const Questionnaire = () => {
   // Campos obrigatórios por seção
   const requiredFields: { [key: string]: string[] } = {
     "1": [
-      "fullName",
       "universityType",
       "courseAreaGeneral",
       "courseName",
@@ -136,81 +136,81 @@ const Questionnaire = () => {
   };
 
   // Motivos do drag-and-drop persistidos no responses
-const motivesDefault = [
-  "Afinidade com a área / interesse pessoal pelos temas do curso",
-  "Identificação com o tipo de profissional que atua na área",
-  "Influência de familiares (pais, responsáveis, parentes)",
-  "Influência de amigos(as) ou conhecidos(as) que também escolheram esse curso",
-  "Pressão familiar para escolher determinada área",
-  "Expectativa de boa remuneração ou estabilidade financeira",
-  "Facilidade de acesso ao curso (proximidade, nota do Enem, bolsa, etc.)",
-  "Poucas opções disponíveis no momento da escolha",
-  "Indecisão: escolhi por não saber o que queria fazer",
-  "Escolhi por já ter experiências anteriores (ex: curso técnico, estágio, trabalho)",
-];
+  const motivesDefault = [
+    "Afinidade com a área / interesse pessoal pelos temas do curso",
+    "Identificação com o tipo de profissional que atua na área",
+    "Influência de familiares (pais, responsáveis, parentes)",
+    "Influência de amigos(as) ou conhecidos(as) que também escolheram esse curso",
+    "Pressão familiar para escolher determinada área",
+    "Expectativa de boa remuneração ou estabilidade financeira",
+    "Facilidade de acesso ao curso (proximidade, nota do Enem, bolsa, etc.)",
+    "Poucas opções disponíveis no momento da escolha",
+    "Indecisão: escolhi por não saber o que queria fazer",
+    "Escolhi por já ter experiências anteriores (ex: curso técnico, estágio, trabalho)",
+  ];
 
-const CourseSelection = () => {
-  const selectedMotives =
-    responses.motivesOrder && Array.isArray(responses.motivesOrder)
-      ? responses.motivesOrder
-      : [];
+  const CourseSelection = () => {
+    const selectedMotives =
+      responses.motivesOrder && Array.isArray(responses.motivesOrder)
+        ? responses.motivesOrder
+        : [];
 
-  const unselectedMotives = motivesDefault.filter(
-    (motive) => !selectedMotives.includes(motive)
-  );
+    const unselectedMotives = motivesDefault.filter(
+      (motive) => !selectedMotives.includes(motive)
+    );
 
-  const handleClick = (motive: string) => {
-    let updated: string[];
+    const handleClick = (motive: string) => {
+      let updated: string[];
 
-    if (selectedMotives.includes(motive)) {
-      // Se já está selecionado, remove da lista
-      updated = selectedMotives.filter((m) => m !== motive);
-    } else {
-      // Adiciona ao final da lista (último clique)
-      updated = [...selectedMotives, motive];
-    }
+      if (selectedMotives.includes(motive)) {
+        // Se já está selecionado, remove da lista
+        updated = selectedMotives.filter((m) => m !== motive);
+      } else {
+        // Adiciona ao final da lista (último clique)
+        updated = [...selectedMotives, motive];
+      }
 
-    updateResponse("motivesOrder", updated);
+      updateResponse("motivesOrder", updated);
+    };
+
+    return (
+      <div className="space-y-4">
+        <Label className="text-sm font-medium text-gray-700">
+          Quais foram os principais motivos que influenciaram sua escolha pelo
+          curso que você está cursando atualmente?
+          <br />
+          (Clique para elencar em ordem de importância — o 1º é o mais
+          importante)
+        </Label>
+
+        <ul className="space-y-2">
+          {selectedMotives.map((motive, index) => (
+            <li
+              key={motive}
+              onClick={() => handleClick(motive)}
+              className="flex items-center gap-2 cursor-pointer border border-primary bg-primary/10 rounded-md px-3 py-2 hover:bg-primary/20 transition"
+            >
+              <span className="text-sm font-bold text-primary w-6">
+                {index + 1}.
+              </span>
+              <span className="text-sm text-gray-800">{motive}</span>
+            </li>
+          ))}
+
+          {unselectedMotives.map((motive) => (
+            <li
+              key={motive}
+              onClick={() => handleClick(motive)}
+              className="flex items-center gap-2 cursor-pointer border border-input rounded-md px-3 py-2 hover:bg-muted transition"
+            >
+              <span className="w-6" /> {/* Reservar espaço para o número */}
+              <span className="text-sm text-gray-800">{motive}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   };
-
-  return (
-    <div className="space-y-4">
-      <Label className="text-sm font-medium text-gray-700">
-        Quais foram os principais motivos que influenciaram sua escolha pelo
-        curso que você está cursando atualmente?
-        <br />
-        (Clique para elencar em ordem de importância — o 1º é o mais importante)
-      </Label>
-
-      <ul className="space-y-2">
-        {selectedMotives.map((motive, index) => (
-          <li
-            key={motive}
-            onClick={() => handleClick(motive)}
-            className="flex items-center gap-2 cursor-pointer border border-primary bg-primary/10 rounded-md px-3 py-2 hover:bg-primary/20 transition"
-          >
-            <span className="text-sm font-bold text-primary w-6">
-              {index + 1}.
-            </span>
-            <span className="text-sm text-gray-800">{motive}</span>
-          </li>
-        ))}
-
-        {unselectedMotives.map((motive) => (
-          <li
-            key={motive}
-            onClick={() => handleClick(motive)}
-            className="flex items-center gap-2 cursor-pointer border border-input rounded-md px-3 py-2 hover:bg-muted transition"
-          >
-            <span className="w-6" /> {/* Reservar espaço para o número */}
-            <span className="text-sm text-gray-800">{motive}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 
   if (isSubmitted) {
     return (
@@ -227,12 +227,6 @@ const CourseSelection = () => {
               Suas respostas foram enviadas com sucesso. Obrigado por contribuir
               para nossa compreensão das experiências das mulheres na ciência.
             </p>
-            <Button
-              onClick={startNewSurvey}
-              className="bg-primary hover:bg-indigo-700"
-            >
-              Iniciar Novo Questionário
-            </Button>
           </div>
         </div>
       </section>
@@ -240,8 +234,8 @@ const CourseSelection = () => {
   }
 
   return (
-    <section className="py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="mt-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Pesquisa Pessoal
@@ -271,26 +265,15 @@ const CourseSelection = () => {
                 Informações Pessoais
               </h3>
               <div className="space-y-6">
-                <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">
-                    Qual o seu nome e sobrenome?
-                  </Label>
-                  <Input
-                    placeholder="Seu nome e sobrenome..."
-                    value={responses.fullName}
-                    onChange={(e) => updateResponse("fullName", e.target.value)}
-                    className="h-10"
-                  />
-                </div>
 
                 <div>
                   <Label className="text-sm font-medium text-gray-700 mb-2">
                     Qual gênero você se identifica?
                   </Label>
                   <Select
-                    value={responses.currentCourseDesired}
+                    value={responses.gender}
                     onValueChange={(value: any) =>
-                      updateResponse("currentCourseDesired", value)
+                      updateResponse("gender", value)
                     }
                   >
                     <SelectTrigger>
@@ -300,16 +283,12 @@ const CourseSelection = () => {
                       <SelectItem value="genero-masculino">
                         Masculino
                       </SelectItem>
-                      <SelectItem value="genero-feminino">
-                        Feminino
-                      </SelectItem>
-                      <SelectItem value="genero-outro">
-                        Outro
-                      </SelectItem>
+                      <SelectItem value="genero-feminino">Feminino</SelectItem>
+                      <SelectItem value="genero-outro">Outro</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div>
                   <Label className="text-sm font-medium text-gray-700 mb-2">
                     Você atualmente está em uma universidade ...
@@ -972,6 +951,9 @@ const CourseSelection = () => {
                       <SelectItem value="nao-repensei">
                         Nunca repensei minha escolha
                       </SelectItem>
+                      <SelectItem value="nao-tive-interesse">
+                        Nunca tive interesse em seguir carreira em STEM
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -1122,7 +1104,8 @@ const CourseSelection = () => {
 
                 <div>
                   <Label className="text-sm font-medium text-gray-700 mb-2">
-                    Cite uma referência para você na ciência/matemática
+                    Cite uma referência para você na ciência/matemática. (Caso
+                    não lembre de alguma, digite apenas " . ")
                   </Label>
                   <Input
                     placeholder="Digite o nome do seu curso..."
@@ -1369,6 +1352,7 @@ const CourseSelection = () => {
           </div>
         </div>
       </div>
+      <FooterSection/>
     </section>
   );
 };

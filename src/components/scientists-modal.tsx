@@ -110,7 +110,7 @@ export default function ScientistModal({
                     {scientist.publications &&
                       scientist.publications.length > 0 && (
                         <div className="mt-4">
-                          <strong className="text-sm">Publicações:</strong>
+                          <strong className="text-sm">Publicações recentes:</strong>
                           <ul className="list-disc list-inside text-xs text-gray-600">
                             {scientist.publications.map((pub, i) => (
                               <li key={i}>

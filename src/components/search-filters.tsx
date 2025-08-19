@@ -80,35 +80,6 @@ export default function SearchFilters({
               />
             </div>
           </div>
-
-          <Select value={selectedField} onValueChange={onFieldChange}>
-            <SelectTrigger className="w-full lg:w-[200px] h-11">
-              <SelectValue placeholder="Todas as Áreas" />
-            </SelectTrigger>
-            <SelectContent>
-              {fields.map((field) => (
-                <SelectItem key={field} value={field}>
-                  {field}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Select
-            value={selectedInstitution}
-            onValueChange={onInstitutionChange}
-          >
-            <SelectTrigger className="w-full lg:w-[200px] h-11">
-              <SelectValue placeholder="Todas as Instituições" />
-            </SelectTrigger>
-            <SelectContent>
-              {institutions.map((institution) => (
-                <SelectItem key={institution} value={institution}>
-                  {institution}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
         </div>
 
         <div>
