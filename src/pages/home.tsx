@@ -1,3 +1,4 @@
+import FooterSection from "../components/footer-section";
 import FeaturedScientists from "../components/featured-scientists";
 import HeroSection from "../components/hero-section";
 import StatsSection from "../components/stats-section";
@@ -7,7 +8,7 @@ export default function Home() {
     <div>
       <HeroSection />
       <FeaturedScientists />
-      <StatsSection />
+      <FooterSection />
     </div>
   );
 }

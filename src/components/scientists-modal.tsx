@@ -85,7 +85,7 @@ export default function ScientistModal({
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Currículo Lattes
+                      Currículo Online
                     </a>
 
                     {scientist.research && (

@@ -3,7 +3,8 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 
 type Item = {
   title: string;
-  content: React.ReactNode;
+  content: string;
+  //content: React.ReactNode;
 };
 
 type ExpandableListProps = {

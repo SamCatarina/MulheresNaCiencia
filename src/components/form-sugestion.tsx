@@ -21,13 +21,14 @@ const initialForm = {
   researchThemes: "",
   link: "",
   reason: "",
+  suggesterName: ""
 };
 
 export default function SuggestScientist() {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
-  console.log(import.meta.env);
+  const [querNomeNosAgradecimentos, setQuerNomeNosAgradecimentos] = useState("");
 
   const handleChange = (field: string, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -210,7 +211,7 @@ export default function SuggestScientist() {
           </div>
           <div>
             <Label className="text-sm font-medium text-gray-700 mb-2">
-              Link para perfil, currículo ou publicação (opcional)
+              Link para currículo online
             </Label>
             <Input
               value={form.link}
@@ -230,6 +231,45 @@ export default function SuggestScientist() {
               placeholder="Conte-nos por que ela merece destaque"
               className="h-24"
             />
+          </div>
+          <div>
+
+
+
+            <div>
+              <Label className="text-sm font-medium text-gray-700 mb-2">
+                Você gostaria que seu nome fosse incluído nos agradecimentos?
+              </Label>
+              <Select
+                value={querNomeNosAgradecimentos}
+                onValueChange={(e) => {
+                const value = e;
+                setQuerNomeNosAgradecimentos(value);
+                // limpa o campo se selecionar "Não"
+                if (value === "não") {
+                  handleChange("reason", "");
+                }
+              }}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione uma opção..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="sim">Sim</SelectItem>
+                  <SelectItem value="não">Não</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {querNomeNosAgradecimentos === "sim" && (
+              <Textarea
+                required
+                value={form.suggesterName}
+                onChange={(e) => handleChange("suggesterName", e.target.value)}
+                placeholder="Digite seu nome e sobrenome"
+                className="h-24 mt-4"
+              />
+            )}
           </div>
           <div className="flex justify-end pt-4">
             <Button

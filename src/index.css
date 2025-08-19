@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
 :root {
   --background: 0, 0%, 95%; /* rgb(19, 24, 66) */
   --alter-background: 0, 0%, 100%; /* rgb(255, 255, 255) */
