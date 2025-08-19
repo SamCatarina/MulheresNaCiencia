@@ -282,6 +282,34 @@ const CourseSelection = () => {
                     className="h-10"
                   />
                 </div>
+
+                <div>
+                  <Label className="text-sm font-medium text-gray-700 mb-2">
+                    Qual gênero você se identifica?
+                  </Label>
+                  <Select
+                    value={responses.currentCourseDesired}
+                    onValueChange={(value: any) =>
+                      updateResponse("currentCourseDesired", value)
+                    }
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione uma opção..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="genero-masculino">
+                        Masculino
+                      </SelectItem>
+                      <SelectItem value="genero-feminino">
+                        Feminino
+                      </SelectItem>
+                      <SelectItem value="genero-outro">
+                        Outro
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
                 <div>
                   <Label className="text-sm font-medium text-gray-700 mb-2">
                     Você atualmente está em uma universidade ...
