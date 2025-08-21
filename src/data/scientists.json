@@ -34,158 +34,112 @@
       }
     ],
     "lattes": "http://lattes.cnpq.br/5852030355340056"
-
   },
   {
     "id": 2,
-    "name": "Dr. Sarah Chen",
-    "field": "Climate Science",
-    "institution": "Stanford University",
+    "name": "Débora Peres Menezes",
+    "field": "Nuclear Physics and Astrophysics",
+    "institution": "Universidade Federal de Santa Catarina",
     "image": "scientist02.png",
-    "research": "Leading researcher in Arctic ice melting patterns and ocean temperature modeling",
+    "research": "Especialista em Física Nuclear e de Hádrons, atuando em equações de estado, modelos relativísticos e astrofísica nuclear. Coordenadora de projetos sobre transições de fase hádrons-quarks e o diagrama de fases da cromodinâmica quântica (QCD). Atua também na divulgação científica, coordenando canais digitais voltados para mulheres na ciência.",
     "researchThemes": [
-      "Climate Change",
-      "Ocean Dynamics",
-      "Ice Sheet Modeling",
-      "Global Warming"
+      "Física Nuclear",
+      "Astrofísica Nuclear",
+      "Modelos Relativísticos",
+      "Equações de Estado",
+      "Cromodinâmica Quântica (QCD)",
+      "Divulgação Científica"
     ],
     "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
+      {
+        "title": "Proto-neutron stars with quark cores",
+        "year": 2025,
+        "journal": "Journal of Cosmology and Astroparticle Physics",
+        "link": "http://dx.doi.org/10.1088/1475-7516/2025/01/024"
+      },
+      {
+        "title": "Supernova remnants with mirror dark matter and hyperons",
+        "year": 2025,
+        "journal": "Physical Review D",
+        "link": "http://dx.doi.org/10.1103/physrevd.111.083026"
+      },
+      {
+        "title": "Surface and curvature tensions in relativistic mean-field models",
+        "year": 2025,
+        "journal": "Journal of Physics G - Nuclear and Particle Physics",
+        "link": "http://dx.doi.org/10.1088/1361-6471/ade3f3"
+      }
+    ],
+    "lattes": " http://lattes.cnpq.br/4521038966994688"
   },
   {
     "id": 3,
-    "name": "Dr. Amira Hassan",
-    "field": "Genetic Engineering",
-    "institution": "Harvard Medical",
+    "name": "Vivian Miranda",
+    "field": "Cosmology and Astrophysics",
+    "institution": "Stony Brook University",
     "image": "scientist03.png",
-    "research": "Breakthrough research in CRISPR gene therapy for rare genetic disorders",
+    "research": "Especialista em cosmologia observacional e teórica, com foco em energia escura, inflação cósmica e lentes gravitacionais. Atualmente é professora assistente no Yang Institute for Theoretical Physics em Stony Brook. Trabalhou anteriormente como cientista de pesquisa e pós-doutoranda em instituições como a University of Arizona, University of Pennsylvania e University of Chicago.",
     "researchThemes": [
-      "CRISPR Technology",
-      "Gene Therapy",
-      "Rare Diseases",
-      "Precision Medicine"
+      "Energia Escura",
+      "Inflação Cósmica",
+      "Radiação Cósmica de Fundo (CMB)",
+      "Cosmologia Observacional",
+      "Lentes Gravitacionais",
+      "Estrutura em Grande Escala do Universo"
     ],
     "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+      {
+        "title": "Early dark energy constraints with late-time expansion marginalization",
+        "year": 2024,
+        "journal": "Journal of Cosmology and Astroparticle Physics",
+        "link": "http://dx.doi.org/10.1088/1475-7516/2024/02/042"
+      },
+      {
+        "title": "Cosmology from weak lensing, galaxy clustering, CMB lensing, and tSZ - I. 10 × 2pt modelling methodology",
+        "year": 2023,
+        "journal": "Monthly Notices of the Royal Astronomical Society",
+        "link": "http://dx.doi.org/10.1093/mnras/stad3808"
+      },
+      {
+        "title": "Growth and geometry split in light of the DES-Y3 survey",
+        "year": 2023,
+        "journal": "Physical Review D",
+        "link": "http://dx.doi.org/10.1103/PhysRevD.107.123529"
+      }
     ]
   },
   {
     "id": 4,
-    "name": "Dr. Elena Popov",
-    "field": "Biochemistry",
-    "institution": "Yale University",
+    "name": "Débora Diniz",
+    "field": "Antropologia, Bioética e Direitos Humanos",
+    "institution": "Universidade de Brasília (UnB)",
     "image": "scientist04.png",
-    "research": "Protein folding mechanisms and therapeutic applications",
+    "research": "Antropóloga, etnógrafa e professora da Faculdade de Direito da UnB, Débora Diniz é uma das principais vozes brasileiras em bioética, feminismo e saúde pública. Atua internacionalmente em conselhos como o Gender and Health Hub da ONU e já participou de painéis da OMS e OPAS. Seu livro sobre o Zika vírus venceu o Prêmio Jabuti e foi traduzido para diversas línguas. É também documentarista premiada, com filmes exibidos em mais de 35 países. Já recebeu distinções como o Prêmio Dan David (2020), Global Health Ethics Leadership da Universidade de Oxford (2023) e Doutora Honoris Causa pela Universidade de Ottawa (2024). Desde 2024 é professora visitante da University of Exeter.",
     "researchThemes": [
-      "Protein Structure",
-      "Drug Discovery",
-      "Molecular Biology",
-      "Therapeutic Development"
+      "Bioética Feminista",
+      "Direitos Humanos e Justiça de Gênero",
+      "Antropologia da Saúde",
+      "Epidemias e Saúde Pública",
+      "Documentário e Antropologia Visual",
+      "Judicialização da Saúde",
+      "Sistema Penal e Gênero"
     ],
     "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
-  },
-  {
-    "id": 5,
-    "name": "Dr. Priya Sharma",
-    "field": "Astrophysics",
-    "institution": "Caltech",
-    "image": "scientist01.png",
-    "research": "Black hole physics and gravitational wave detection",
-    "researchThemes": [
-      "Black Holes",
-      "Gravitational Waves",
-      "Space Physics",
-      "Cosmology"
-    ],
-    "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
-  },
-  {
-    "id": 6,
-    "name": "Dr. Lisa Wang",
-    "field": "Computer Science",
-    "institution": "Google Research",
-    "image": "scientist02.png",
-    "research": "Natural language processing and ethical AI development",
-    "researchThemes": [
-      "Artificial Intelligence",
-      "Natural Language Processing",
-      "Machine Learning",
-      "Ethics in AI"
-    ],
-    "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
-  },
-  {
-    "id": 7,
-    "name": "Dr. Jessica Torres",
-    "field": "Marine Biology",
-    "institution": "Woods Hole",
-    "image": "scientist03.png",
-    "research": "Coral reef conservation and climate change adaptation",
-    "researchThemes": [
-      "Marine Ecosystems",
-      "Coral Conservation",
-      "Climate Adaptation",
-      "Ocean Biodiversity"
-    ],
-    "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Dr. Fatima Al-Rashid",
-    "field": "Quantum Physics",
-    "institution": "Oxford University",
-    "image": "scientist04.png",
-    "research": "Quantum computing applications in cryptography",
-    "researchThemes": [
-      "Quantum Computing",
-      "Quantum Cryptography",
-      "Information Security",
-      "Quantum Mechanics"
-    ],
-    "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Dr. Anna Kowalski",
-    "field": "Biomedical Engineering",
-    "institution": "Johns Hopkins",
-    "image": "scientist01.png",
-    "research": "Neural interfaces for paralysis recovery",
-    "researchThemes": [
-      "Neural Interfaces",
-      "Paralysis Recovery",
-      "Rehabilitation Technology",
-      "Biomedical Devices"
-    ],
-    "publications": [
-      { "title": "Pub 1", "year": 2020, "journal": "Journal A" },
-      { "title": "Pub 2", "year": 2021, "journal": "Journal B" },
-      { "title": "Pub 3", "year": 2022, "journal": "Journal C" }
+      {
+        "title": "The end, and what comes after",
+        "year": 2025,
+        "journal": "The Lancet"
+      },
+      {
+        "title": "A dramaturgia de uma emergência sanitária: as temporalidades vividas por mulheres na epidemia de zika no Brasil",
+        "year": 2025,
+        "journal": "Ciência & Saúde Coletiva"
+      },
+      {
+        "title": "When criminal law hinders public health emergency responses",
+        "year": 2025,
+        "journal": "Developing World Bioethics"
+      }
     ]
   }
 ]

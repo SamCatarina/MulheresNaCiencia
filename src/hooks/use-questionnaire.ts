@@ -13,15 +13,12 @@ export interface QuestionnaireResponses {
   // Seção 2
   currentCourseDesired: string;
   currentCourseIdentification: string;
-  currentCourseAreaMatch: string;
-  currentCourseAreaIdentification: string;
   familyInfluence: string;
   societalContribution: string;
   financialReturn: string;
   financialReturnTime: string;
   courseAvailability: string;
   familyInCourseArea: string;
-  quickReturnFields: string;
   futureProfessionalSelf: string;
   stemCareerInterest: string;
   stemCareerEverInterest: string;
@@ -61,8 +58,6 @@ const initialResponses: QuestionnaireResponses = {
   // Seção 2
   currentCourseDesired: "",
   currentCourseIdentification: "",
-  currentCourseAreaMatch: "",
-  currentCourseAreaIdentification: "",
   familyInfluence: "",
   motivesOrder: [],
   societalContribution: "",
@@ -70,7 +65,6 @@ const initialResponses: QuestionnaireResponses = {
   financialReturnTime: "",
   courseAvailability: "",
   familyInCourseArea: "",
-  quickReturnFields: "",
   futureProfessionalSelf: "",
   stemCareerInterest: "",
   stemCareerEverInterest: "",
@@ -100,7 +94,7 @@ export function useQuestionnaire() {
     useState<QuestionnaireResponses>(initialResponses);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const totalSections = 4;
+  const totalSections = 5;
 
   const submitToGoogleSheets = async (): Promise<boolean> => {
     try {

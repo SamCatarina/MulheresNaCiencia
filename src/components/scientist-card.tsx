@@ -71,7 +71,10 @@ export default function ScientistCard({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-primary/20">
+    <div
+      className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-primary/20 hover:cursor-pointer"
+      onClick={() => setIsOpen(true)}
+    >
       <div className="relative mb-3">
         <img
           src={scientist.image}
@@ -100,17 +103,6 @@ export default function ScientistCard({
       )}
 
       <div className="flex items-center justify-between">
-        {scientist.publications && (
-          <span className="text-gray-400 text-xs">
-            {scientist.publications.length} pub.
-          </span>
-        )}
-        <button
-          className="text-primary text-sm font-medium hover:underline"
-          onClick={() => setIsOpen(true)}
-        >
-          Ver Detalhes
-        </button>
         <ScientistModal
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}

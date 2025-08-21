@@ -39,7 +39,8 @@ const Questionnaire = () => {
 
   // Campos obrigatórios por seção
   const requiredFields: { [key: string]: string[] } = {
-    "1": [
+    "2": [
+      "gender",
       "universityType",
       "courseAreaGeneral",
       "courseName",
@@ -48,24 +49,21 @@ const Questionnaire = () => {
       "childhoodHobbiesTime",
       "childhoodMainActivities",
     ],
-    "2": [
+    "3": [
       "currentCourseDesired",
       "currentCourseIdentification",
-      "currentCourseAreaMatch",
-      "currentCourseAreaIdentification",
       "familyInfluence",
       "societalContribution",
       "financialReturn",
       "financialReturnTime",
       "courseAvailability",
       "familyInCourseArea",
-      "quickReturnFields",
       "futureProfessionalSelf",
       "stemCareerInterest",
       "stemCareerEverInterest",
-      "stemCareerDesistanceReason",
+      "motivesOrder",
     ],
-    "3": [
+    "4": [
       "schoolExactInterestByGender",
       "preCollegeExactInterestLevel",
       "familySchoolPerformanceValue",
@@ -78,7 +76,7 @@ const Questionnaire = () => {
       "feelingExcludedTech",
       "feelingExcludedExact",
     ],
-    "4": [
+    "5": [
       "familyStudyIncentive",
       "activityGenderRestriction",
       "professionsByGenderOpinion",
@@ -104,15 +102,34 @@ const Questionnaire = () => {
     },
   ];
 
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] =
+    useState(false);
+
   // Verifica se todos os campos obrigatórios da seção estão preenchidos
   // Permitir indexação por string (corrige erro TS)
+  const [consentimento, setConsentimento] = useState<string | null>(null);
   const responsesAny = responses as { [key: string]: any };
-  const isSectionValid = requiredFields[String(currentSection)].every(
-    (field) =>
-      responsesAny[field] !== "" &&
-      responsesAny[field] !== undefined &&
-      responsesAny[field] !== null
-  );
+
+  const isSectionValid =
+    currentSection === 1
+      ? consentimento === "sim"
+      : requiredFields[String(currentSection)].every((field) => {
+          const value = responsesAny[field];
+
+          // Valida arrays obrigatórios
+          if (["childhoodMainActivities", "motivesOrder"].includes(field)) {
+            return Array.isArray(value) && value.length > 0;
+          }
+
+          // Validação padrão
+          return value !== "" && value !== undefined && value !== null;
+        }) &&
+        // Validação condicional para desinteresse em STEM
+        (currentSection !== 3 ||
+          responsesAny["stemCareerEverInterest"] !== "sim" ||
+          (responsesAny["stemCareerDesistanceReason"] !== "" &&
+            responsesAny["stemCareerDesistanceReason"] !== undefined &&
+            responsesAny["stemCareerDesistanceReason"] !== null));
 
   const { toast } = useToast();
 
@@ -122,17 +139,6 @@ const Questionnaire = () => {
       title: "Progresso Salvo",
       description: "O progresso do seu questionário foi salvo com sucesso.",
     });
-  };
-
-  const reorder = (
-    list: string[],
-    startIndex: number,
-    endIndex: number
-  ): string[] => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
   };
 
   // Motivos do drag-and-drop persistidos no responses
@@ -258,14 +264,141 @@ const Questionnaire = () => {
         </div>
 
         <div className="bg-white rounded-xl shadow-sm p-8">
-          {/* Section 1: Personal Background */}
           {currentSection === 1 && (
+            <div className="space-y-6">
+              <div className="text-gray-700 text-base space-y-5">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  Termo de Consentimento Livre e Esclarecido
+                </h3>
+
+                <p>
+                  Agradecemos por dedicar seu tempo para participar desta
+                  pesquisa!
+                </p>
+
+                <p>
+                  A presença de mulheres nas áreas de STEM (Ciência, Tecnologia,
+                  Engenharia e Matemática) é fundamental para o avanço
+                  científico e tecnológico com mais diversidade, inclusão e
+                  representatividade. Ainda assim, a participação feminina
+                  nessas áreas permanece desproporcional, reflexo de desafios
+                  históricos, sociais e culturais.
+                </p>
+
+                <p>
+                  Este estudo tem como objetivo compreender a trajetória, os
+                  interesses e os fatores que influenciaram — positiva ou
+                  negativamente — a relação de mulheres com as áreas de STEM ao
+                  longo de suas vidas. A pesquisa foca especialmente em
+                  estudantes de cursos superiores na cidade de Salgueiro,
+                  Pernambuco, buscando identificar como experiências pessoais,
+                  escolares, sociais e familiares impactaram a escolha (ou não)
+                  por essas áreas.
+                </p>
+
+                <p>
+                  Esta pesquisa é voltada para{" "}
+                  <span className="font-medium">
+                    docentes do ensino superior
+                  </span>
+                  , e o tempo estimado para preenchimento do questionário é de{" "}
+                  <span className="font-medium">10 a 15 minutos</span>.
+                </p>
+
+                <p>
+                  Ao enviar este formulário,{" "}
+                  <span className="font-medium">
+                    nenhuma informação pessoal identificável
+                  </span>{" "}
+                  (como nome ou e-mail) será coletada.
+                </p>
+
+                <p>
+                  Todas as respostas são{" "}
+                  <span className="font-medium">confidenciais</span> e
+                  analisadas apenas de forma agregada. Os dados serão utilizados
+                  exclusivamente para fins acadêmicos e poderão ser apresentados
+                  em publicações científicas, sempre garantindo o anonimato dos
+                  participantes.
+                </p>
+
+                <p>
+                  Não há riscos diretos associados à participação. Embora não
+                  existam benefícios diretos, sua colaboração contribuirá para o
+                  aprimoramento da gestão da qualidade no ensino superior.
+                </p>
+
+                <p>
+                  Em caso de dúvidas, você pode entrar em contato com a
+                  pesquisadora responsável:
+                </p>
+
+                <div className="pl-4 border-l-2 border-gray-300 text-sm text-gray-600 space-y-1">
+                  <p>
+                    <span className="font-medium">
+                      Catarina Cysneiros Sampaio
+                    </span>
+                  </p>
+                  <p>Discente de Ciência da Computação</p>
+                  <p>
+                    Universidade Federal do Vale do Rio São Francisco (UNIVASF),
+                    Salgueiro - PE
+                  </p>
+                  <p>
+                    <a
+                      href="mailto:felipe.guilherme@univasf.edu.br"
+                      className="text-blue-600 hover:underline"
+                    >
+                      catarina.sampaio@discente.univasf.edu.br
+                    </a>
+                  </p>
+                </div>
+
+                <h4 className="text-lg font-semibold text-gray-900 pt-6">
+                  Consentimento Informado
+                </h4>
+
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Leu e compreendeu as informações acima;</li>
+                  <li>
+                    Concorda voluntariamente em participar desta pesquisa.
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <Label className="text-sm font-medium text-gray-700 mb-2 block">
+                  Você concorda em participar da pesquisa?
+                </Label>
+                <Select
+                  value={consentimento || ""}
+                  onValueChange={(value) => setConsentimento(value)}
+                >
+                  <SelectTrigger className="w-full sm:w-64">
+                    <SelectValue placeholder="Selecione uma opção..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sim">Sim, concordo</SelectItem>
+                    <SelectItem value="nao">Não, não concordo</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {consentimento === "nao" && (
+                <p className="text-red-600 text-sm">
+                  Você precisa aceitar participar para iniciar o questionário.
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Section 1: Personal Background */}
+          {currentSection === 2 && (
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-primary">
                 Informações Pessoais
               </h3>
               <div className="space-y-6">
-
                 <div>
                   <Label className="text-sm font-medium text-gray-700 mb-2">
                     Qual gênero você se identifica?
@@ -491,8 +624,7 @@ const Questionnaire = () => {
                             item.value
                           )}
                           onCheckedChange={(checked) => {
-                            const current =
-                              responses.childhoodMainActivities || [];
+                            const current = responses.childhoodMainActivities;
                             const updated =
                               checked === true
                                 ? [...current, item.value]
@@ -513,7 +645,7 @@ const Questionnaire = () => {
           )}
 
           {/* Section 2: Challenges and Barriers */}
-          {currentSection === 2 && (
+          {currentSection === 3 && (
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-primary">
                 Sobre a escolha do curso
@@ -572,69 +704,6 @@ const Questionnaire = () => {
                       </SelectItem>
                       <SelectItem value="nao-sabia">
                         Não sei / Estou em dúvida.
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">
-                    A área do seu curso atual (ex: Humanas, Exatas ou Saúde) é a
-                    mesma que você pretendia cursar anteriormente?
-                  </Label>
-                  <Select
-                    value={responses.currentCourseAreaMatch}
-                    onValueChange={(value: any) =>
-                      updateResponse("currentCourseAreaMatch", value)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione uma opção..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="sim-sempre-quis">
-                        Sim, sempre quis essa área.
-                      </SelectItem>
-                      <SelectItem value="sim-considerei-mudar">
-                        Sim, mas já considerei mudar de área antes.
-                      </SelectItem>
-                      <SelectItem value="nao-pensava-outra-area">
-                        Não, pensava em cursar outra área.
-                      </SelectItem>
-                      <SelectItem value="duvidas-area-certa">
-                        Ainda tenho dúvidas sobre se estou na área certa.
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">
-                    Você se identifica com a área do conhecimento do seu curso
-                    (Humanas, Exatas ou Saúde)?
-                  </Label>
-                  <Select
-                    value={responses.currentCourseAreaIdentification}
-                    onValueChange={(value: any) =>
-                      updateResponse("currentCourseAreaIdentification", value)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione uma opção..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="sim-me-identifico">
-                        Sim, me identifico com a área.
-                      </SelectItem>
-                      <SelectItem value="em-parte">
-                        Em parte, tenho afinidade com alguns aspectos.
-                      </SelectItem>
-                      <SelectItem value="nao-muito">
-                        Não muito, às vezes penso que outra área combina mais
-                        comigo.
-                      </SelectItem>
-                      <SelectItem value="nao-acredito">
-                        Não, acredito que estou na área errada.
                       </SelectItem>
                     </SelectContent>
                   </Select>
@@ -835,43 +904,6 @@ const Questionnaire = () => {
                   </Select>
                 </div>
 
-                <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">
-                    Na sua opinião, quais áreas profissionais oferecem um
-                    retorno financeiro mais rápido na região onde você vive?
-                  </Label>
-                  <Select
-                    value={responses.quickReturnFields}
-                    onValueChange={(value: any) =>
-                      updateResponse("quickReturnFields", value)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione uma área..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="saude">
-                        Saúde (ex: Enfermagem, Medicina, Odontologia)
-                      </SelectItem>
-                      <SelectItem value="educacao">
-                        Educação (ex: Pedagogia, Letras, História)
-                      </SelectItem>
-                      <SelectItem value="engenharia">
-                        Engenharia (ex: Civil, Elétrica, Mecânica)
-                      </SelectItem>
-                      <SelectItem value="tecnologia">
-                        Tecnologia da Informação (ex: Computação, Análise de
-                        Sistemas)
-                      </SelectItem>
-                      <SelectItem value="adm-negocios">
-                        Administração e Negócios
-                      </SelectItem>
-                      <SelectItem value="direito">Direito</SelectItem>
-                      <SelectItem value="outros">Outros</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
                 <LikertScale
                   question="Consigo me imaginar no futuro como um(a) profissional nas áreas de ciência, engenharia ou tecnologia."
                   value={responses.futureProfessionalSelf}
@@ -895,9 +927,14 @@ const Questionnaire = () => {
                   </Label>
                   <Select
                     value={responses.stemCareerEverInterest}
-                    onValueChange={(value: any) =>
-                      updateResponse("stemCareerEverInterest", value)
-                    }
+                    onValueChange={(value: any) => {
+                      updateResponse("stemCareerEverInterest", value);
+
+                      // Se a resposta não for "sim", limpamos a segunda resposta
+                      if (value !== "sim") {
+                        updateResponse("stemCareerDesistanceReason", "");
+                      }
+                    }}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Selecione uma opção..." />
@@ -912,57 +949,59 @@ const Questionnaire = () => {
                   </Select>
                 </div>
 
-                <div>
-                  <Label className="text-sm font-medium text-gray-700 mb-2">
-                    Se respondeu "Sim", o que fez você desistir ou repensar essa
-                    escolha?
-                  </Label>
-                  <Select
-                    value={responses.stemCareerDesistanceReason}
-                    onValueChange={(value: any) =>
-                      updateResponse("stemCareerDesistanceReason", value)
-                    }
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Selecione um motivo..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="falta-identificacao">
-                        Falta de identificação com a área
-                      </SelectItem>
-                      <SelectItem value="dificuldade-exatas">
-                        Dificuldade com disciplinas de exatas
-                      </SelectItem>
-                      <SelectItem value="falta-representatividade">
-                        Falta de representatividade ou referências
-                      </SelectItem>
-                      <SelectItem value="pressao-familiar">
-                        Pressão familiar para escolher outra área
-                      </SelectItem>
-                      <SelectItem value="falta-informacao">
-                        Falta de informação sobre carreiras em STEM
-                      </SelectItem>
-                      <SelectItem value="poucas-oportunidades">
-                        Poucas oportunidades na minha região
-                      </SelectItem>
-                      <SelectItem value="questoes-financeiras">
-                        Questões financeiras
-                      </SelectItem>
-                      <SelectItem value="nao-repensei">
-                        Nunca repensei minha escolha
-                      </SelectItem>
-                      <SelectItem value="nao-tive-interesse">
-                        Nunca tive interesse em seguir carreira em STEM
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                {responses.stemCareerEverInterest === "sim" && (
+                  <div>
+                    <Label className="text-sm font-medium text-gray-700 mb-2">
+                      Se respondeu "Sim", o que fez você desistir ou repensar
+                      essa escolha?
+                    </Label>
+                    <Select
+                      value={responses.stemCareerDesistanceReason}
+                      onValueChange={(value: any) => {
+                        updateResponse("stemCareerDesistanceReason", value);
+                      }}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Selecione um motivo..." />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="nao-desisti">
+                          Não desisti / Sigo na área
+                        </SelectItem>
+                        <SelectItem value="falta-identificacao">
+                          Falta de identificação com a área
+                        </SelectItem>
+                        <SelectItem value="dificuldade-exatas">
+                          Dificuldade com disciplinas de exatas
+                        </SelectItem>
+                        <SelectItem value="falta-representatividade">
+                          Falta de representatividade ou referências
+                        </SelectItem>
+                        <SelectItem value="pressao-familiar">
+                          Pressão familiar para escolher outra área
+                        </SelectItem>
+                        <SelectItem value="falta-informacao">
+                          Falta de informação sobre carreiras em STEM
+                        </SelectItem>
+                        <SelectItem value="poucas-oportunidades">
+                          Poucas oportunidades na minha região
+                        </SelectItem>
+                        <SelectItem value="questoes-financeiras">
+                          Questões financeiras
+                        </SelectItem>
+                        <SelectItem value="nao-repensei">
+                          Nunca repensei minha escolha
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
               </div>
             </div>
           )}
 
           {/* Section 3: Role Models and Mentorship */}
-          {currentSection === 3 && (
+          {currentSection === 4 && (
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-primary">
                 Sobre interesse em STEM
@@ -1271,7 +1310,7 @@ const Questionnaire = () => {
           )}
 
           {/* Section 4: Future Goals */}
-          {currentSection === 4 && (
+          {currentSection === 5 && (
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-primary">
                 Sobre opiniões
@@ -1317,19 +1356,21 @@ const Questionnaire = () => {
             <Button
               variant="outline"
               onClick={goToPreviousSection}
-              className={currentSection === 1 ? "invisible" : ""}
+              className={currentSection === (1 || 2) ? "invisible" : ""}
             >
               <i className="fas fa-arrow-left mr-2"></i>Anterior
             </Button>
 
             <div className="flex space-x-4 ml-auto">
-              <Button
-                variant="outline"
-                onClick={handleSaveProgress}
-                className="bg-secondary hover:bg-cyan-600 "
-              >
-                <i className="fas fa-save mr-2"></i>Salvar Progresso
-              </Button>
+              {currentSection !== 1 && (
+                <Button
+                  variant="outline"
+                  onClick={handleSaveProgress}
+                  className="bg-secondary hover:bg-cyan-600 "
+                >
+                  <i className="fas fa-save mr-2"></i>Salvar Progresso
+                </Button>
+              )}
 
               {currentSection < totalSections ? (
                 <Button
@@ -1341,9 +1382,12 @@ const Questionnaire = () => {
                 </Button>
               ) : (
                 <Button
-                  onClick={submitQuestionnaire}
+                  onClick={() => {
+                    setIsSubmitButtonDisabled(true);
+                    submitQuestionnaire();
+                  }}
                   className="bg-accent hover:bg-pink-600"
-                  disabled={!isSectionValid}
+                  disabled={!isSectionValid || isSubmitButtonDisabled}
                 >
                   <i className="fas fa-paper-plane mr-2"></i>Enviar Questionário
                 </Button>
@@ -1352,7 +1396,7 @@ const Questionnaire = () => {
           </div>
         </div>
       </div>
-      <FooterSection/>
+      <FooterSection />
     </section>
   );
 };
