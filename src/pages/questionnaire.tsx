@@ -16,7 +16,7 @@ import { Label } from "../components/ui/label";
 import { Progress } from "../components/ui/progress";
 import { useToast } from "../hooks/use-toast";
 import LikertScale from "../components/ui/likert-scale";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { SquareCheckbox } from "../components/ui/roundCheckbox";
 import FooterSection from "../components/footer-section";
@@ -101,6 +101,11 @@ const Questionnaire = () => {
       value: "estudar-por-conta",
     },
   ];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentSection]);
+
 
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
 
@@ -307,8 +312,8 @@ const Questionnaire = () => {
                   Todas as respostas são{" "}
                   <span className="font-medium">confidenciais</span> e
                   analisadas apenas de forma agregada. Os dados serão utilizados
-                  exclusivamente para fins acadêmicos, sempre garantindo o anonimato dos
-                  participantes.
+                  exclusivamente para fins acadêmicos, sempre garantindo o
+                  anonimato dos participantes.
                 </p>
 
                 <p>
@@ -336,7 +341,6 @@ const Questionnaire = () => {
                     </a>
                   </p>
                 </div>
-
               </div>
 
               <div>
@@ -464,7 +468,7 @@ const Questionnaire = () => {
                     onChange={(e) =>
                       updateResponse("courseName", e.target.value)
                     }
-                    className="h-10"
+                    className="text-sm"
                   />
                 </div>
 
