@@ -102,8 +102,7 @@ const Questionnaire = () => {
     },
   ];
 
-  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] =
-    useState(false);
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(false);
 
   // Verifica se todos os campos obrigatórios da seção estão preenchidos
   // Permitir indexação por string (corrige erro TS)
@@ -133,13 +132,6 @@ const Questionnaire = () => {
 
   const { toast } = useToast();
 
-  const handleSaveProgress = () => {
-    saveProgress();
-    toast({
-      title: "Progresso Salvo",
-      description: "O progresso do seu questionário foi salvo com sucesso.",
-    });
-  };
 
   // Motivos do drag-and-drop persistidos no responses
   const motivesDefault = [
@@ -267,8 +259,8 @@ const Questionnaire = () => {
           {currentSection === 1 && (
             <div className="space-y-6">
               <div className="text-gray-700 text-base space-y-5">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Termo de Consentimento Livre e Esclarecido
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
+                  Pesquisa sobre o interesse na área de STEM
                 </h3>
 
                 <p>
@@ -299,10 +291,8 @@ const Questionnaire = () => {
                 <p>
                   Esta pesquisa é voltada para{" "}
                   <span className="font-medium">
-                    docentes do ensino superior
+                    dicentes do ensino superior.
                   </span>
-                  , e o tempo estimado para preenchimento do questionário é de{" "}
-                  <span className="font-medium">10 a 15 minutos</span>.
                 </p>
 
                 <p>
@@ -317,15 +307,8 @@ const Questionnaire = () => {
                   Todas as respostas são{" "}
                   <span className="font-medium">confidenciais</span> e
                   analisadas apenas de forma agregada. Os dados serão utilizados
-                  exclusivamente para fins acadêmicos e poderão ser apresentados
-                  em publicações científicas, sempre garantindo o anonimato dos
+                  exclusivamente para fins acadêmicos, sempre garantindo o anonimato dos
                   participantes.
-                </p>
-
-                <p>
-                  Não há riscos diretos associados à participação. Embora não
-                  existam benefícios diretos, sua colaboração contribuirá para o
-                  aprimoramento da gestão da qualidade no ensino superior.
                 </p>
 
                 <p>
@@ -354,16 +337,6 @@ const Questionnaire = () => {
                   </p>
                 </div>
 
-                <h4 className="text-lg font-semibold text-gray-900 pt-6">
-                  Consentimento Informado
-                </h4>
-
-                <ul className="list-disc pl-5 space-y-2">
-                  <li>Leu e compreendeu as informações acima;</li>
-                  <li>
-                    Concorda voluntariamente em participar desta pesquisa.
-                  </li>
-                </ul>
               </div>
 
               <div>
@@ -1362,16 +1335,6 @@ const Questionnaire = () => {
             </Button>
 
             <div className="flex space-x-4 ml-auto">
-              {currentSection !== 1 && (
-                <Button
-                  variant="outline"
-                  onClick={handleSaveProgress}
-                  className="bg-secondary hover:bg-cyan-600 "
-                >
-                  <i className="fas fa-save mr-2"></i>Salvar Progresso
-                </Button>
-              )}
-
               {currentSection < totalSections ? (
                 <Button
                   onClick={goToNextSection}

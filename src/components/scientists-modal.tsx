@@ -79,14 +79,16 @@ export default function ScientistModal({
                     <p className="text-gray-600 text-sm">
                       {scientist.institution}
                     </p>
-                    <a
-                      className="text-blue-600 text-sm underline hover:text-blue-800 cursor-pointer"
-                      href={scientist.lattes}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Currículo Online
-                    </a>
+                    {scientist.lattes && (
+                      <a
+                        className="text-blue-600 text-sm underline hover:text-blue-800 cursor-pointer"
+                        href={scientist.lattes}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Currículo Online
+                      </a>
+                    )}
 
                     {scientist.research && (
                       <p className="text-gray-700 text-sm mt-2">
@@ -110,7 +112,9 @@ export default function ScientistModal({
                     {scientist.publications &&
                       scientist.publications.length > 0 && (
                         <div className="mt-4">
-                          <strong className="text-sm">Publicações recentes:</strong>
+                          <strong className="text-sm">
+                            Publicações recentes:
+                          </strong>
                           <ul className="list-disc list-inside text-xs text-gray-600">
                             {scientist.publications.map((pub, i) => (
                               <li key={i}>

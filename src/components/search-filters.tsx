@@ -62,7 +62,7 @@ export default function SearchFilters({
 
   const displayedThemes = showAllThemes
     ? availableThemes
-    : availableThemes.slice(0, 30);
+    : availableThemes.slice(0, 15);
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
@@ -110,7 +110,7 @@ export default function SearchFilters({
               ))}
             </div>
 
-            {!showAllThemes && availableThemes.length > 30 && (
+            {!showAllThemes && availableThemes.length > 15 && (
               <button
                 className="mt-4 text-xs text-gray-600 hover:underline"
                 onClick={() => setShowAllThemes(true)}

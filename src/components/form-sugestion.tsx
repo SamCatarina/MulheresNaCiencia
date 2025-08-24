@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -21,21 +21,32 @@ const initialForm = {
   researchThemes: "",
   link: "",
   reason: "",
-  suggesterName: ""
+  suggesterName: "",
 };
 
 export default function SuggestScientist() {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const { toast } = useToast();
-  const [querNomeNosAgradecimentos, setQuerNomeNosAgradecimentos] = useState("");
+  const [querNomeNosAgradecimentos, setQuerNomeNosAgradecimentos] =
+    useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (field: string, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+  const isSectionValid = () => {
+    return (
+      form.name.trim() !== "" &&
+      form.field.trim() !== "" &&
+      form.researchThemes.trim() !== ""
+    );
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       // Use import.meta.env para variáveis de ambiente no Vite
@@ -52,8 +63,8 @@ export default function SuggestScientist() {
         body: new URLSearchParams({
           name: form.name,
           field: form.field,
-          fieldOther: form.fieldOther,
-          institution: form.institution,
+          fieldOther: form.fieldOther || "",
+          institution: form.institution || "",
           achievement: form.achievement,
           researchThemes: form.researchThemes,
           link: form.link,
@@ -76,6 +87,8 @@ export default function SuggestScientist() {
         description: "Tente novamente em instantes.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -127,7 +140,6 @@ export default function SuggestScientist() {
               Nome completo da cientista
             </Label>
             <Input
-              required
               value={form.name}
               onChange={(e) => handleChange("name", e.target.value)}
               placeholder="Nome completo"
@@ -182,7 +194,6 @@ export default function SuggestScientist() {
               Instituição
             </Label>
             <Input
-              required
               value={form.institution}
               onChange={(e) => handleChange("institution", e.target.value)}
               placeholder="Instituição atual"
@@ -193,7 +204,6 @@ export default function SuggestScientist() {
               Principais conquistas
             </Label>
             <Textarea
-              required
               value={form.achievement}
               onChange={(e) => handleChange("achievement", e.target.value)}
               placeholder="Descreva as principais conquistas ou contribuições"
@@ -226,7 +236,6 @@ export default function SuggestScientist() {
               Por que essa cientista deve ser incluída?
             </Label>
             <Textarea
-              required
               value={form.reason}
               onChange={(e) => handleChange("reason", e.target.value)}
               placeholder="Conte-nos por que ela merece destaque"
@@ -234,9 +243,6 @@ export default function SuggestScientist() {
             />
           </div>
           <div>
-
-
-
             <div>
               <Label className="text-sm font-medium text-gray-700 mb-2">
                 Você gostaria que seu nome fosse incluído nos agradecimentos?
@@ -244,13 +250,13 @@ export default function SuggestScientist() {
               <Select
                 value={querNomeNosAgradecimentos}
                 onValueChange={(e) => {
-                const value = e;
-                setQuerNomeNosAgradecimentos(value);
-                // limpa o campo se selecionar "Não"
-                if (value === "não") {
-                  handleChange("suggesterName", "");
-                }
-              }}
+                  const value = e;
+                  setQuerNomeNosAgradecimentos(value);
+                  // limpa o campo se selecionar "Não"
+                  if (value === "não") {
+                    handleChange("suggesterName", "");
+                  }
+                }}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Selecione uma opção..." />
@@ -276,6 +282,7 @@ export default function SuggestScientist() {
             <Button
               type="submit"
               className="bg-primary hover:bg-indigo-700 px-8 py-3 rounded-lg font-medium"
+              disabled={!isSectionValid() || isSubmitting}
             >
               Enviar Sugestão
             </Button>

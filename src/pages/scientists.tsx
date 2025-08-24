@@ -59,7 +59,6 @@ export default function Scientists() {
 
   const visibleScientists = filteredScientists.slice(0, visibleCount);
 
-  console.log("Filtered Scientists:", filteredScientists);
 
   return (
     <section className="mt-8">
