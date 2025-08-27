@@ -183,7 +183,7 @@ const Questionnaire = () => {
           curso que você está cursando atualmente?
           <br />
           (Clique para elencar em ordem de importância — o 1º é o mais
-          importante)
+          importante, selecione pelo menos 3)
         </Label>
 
         <ul className="space-y-2">
@@ -649,6 +649,9 @@ const Questionnaire = () => {
                       </SelectItem>
                       <SelectItem value="desde-medio">
                         Sim, desde o ensino médio.
+                      </SelectItem>
+                      <SelectItem value="depois-medio">
+                        Sim, depois de terminar o ensino médio.
                       </SelectItem>
                       <SelectItem value="nao-primeira-opcao">
                         Não, não era minha primeira opção.

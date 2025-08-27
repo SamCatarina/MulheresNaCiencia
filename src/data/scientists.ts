@@ -1,17 +1,14 @@
 import { Scientist } from "../components/scientists-modal";
 import scientistsJson from "./scientists.json";
-import scientist01 from "./images/scientist01.png";
-import scientist02 from "./images/scientist02.png";
-import scientist03 from "./images/scientist03.png";
-import scientist04 from "./images/scientist04.png";
-import scientist05 from "./images/scientist05.png";
+import profile01 from "./images/profile01.png";
+import profile02 from "./images/profile02.png";
+import profile03 from "./images/profile03.png";
+
 
 const imageMap: Record<string, string> = {
-  "scientist01.png": scientist01,
-  "scientist02.png": scientist02,
-  "scientist03.png": scientist03,
-  "scientist04.png": scientist04,
-  "scientist05.png": scientist05,
+  "profile01.png": profile01,
+  "profile02.png": profile02,
+  "profile03.png": profile03,
 };
 
 export const allScientists: Scientist[] = (scientistsJson as Scientist[]).map(

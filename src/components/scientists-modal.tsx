@@ -59,12 +59,6 @@ export default function ScientistModal({
             >
               <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <img
-                    src={scientist.image}
-                    alt={scientist.name}
-                    className="w-full md:w-1/3 h-64 object-cover rounded-xl"
-                  />
-
                   <div className="flex flex-col gap-2 flex-1">
                     <Dialog.Title
                       as="h3"

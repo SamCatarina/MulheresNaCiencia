@@ -20,7 +20,7 @@ export default function ScientistCard({
           <img
             src={scientist.image}
             alt={scientist.name}
-            className="w-full h-56 object-cover rounded-lg"
+            className="w-10 h-10"
           />
           <div className="absolute top-3 right-3">
             <div className="bg-primary  px-2 py-1 rounded-full text-xs font-medium">
@@ -75,11 +75,11 @@ export default function ScientistCard({
       className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 p-4 border border-gray-100 hover:border-primary/20 hover:cursor-pointer"
       onClick={() => setIsOpen(true)}
     >
-      <div className="relative mb-3">
+      <div className="relative mb-3 w-30 h-60 rounded-lg bg-gradient-to-br from-purple-200 via-pink-100 to-blue-200 flex items-center justify-center">
         <img
           src={scientist.image}
           alt={scientist.name}
-          className="w-full h-48 object-cover object-top rounded-lg"
+          className="w-[9rem] object-contain"
         />
       </div>
 
