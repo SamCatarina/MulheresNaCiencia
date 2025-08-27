@@ -512,6 +512,7 @@ const Questionnaire = () => {
                       </SelectItem>
                       <SelectItem value="mestrado">Mestrado</SelectItem>
                       <SelectItem value="doutorado">Doutorado</SelectItem>
+                      <SelectItem value="outro">Outro</SelectItem>
                       <SelectItem value="nao-sabe">Não sei informar</SelectItem>
                     </SelectContent>
                   </Select>
@@ -966,9 +967,6 @@ const Questionnaire = () => {
                         <SelectItem value="questoes-financeiras">
                           Questões financeiras
                         </SelectItem>
-                        <SelectItem value="nao-repensei">
-                          Nunca repensei minha escolha
-                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -1120,16 +1118,16 @@ const Questionnaire = () => {
 
                 <div>
                   <Label className="text-sm font-medium text-gray-700 mb-2">
-                    Cite uma referência para você na ciência/matemática. (Caso
-                    não lembre de alguma, digite apenas " . ")
+                    Cite uma referência para você na ciências exatas. (Caso não
+                    lembre de algum, digite apenas " . ")
                   </Label>
                   <Input
-                    placeholder="Digite o nome do seu curso..."
+                    placeholder="Digite o nome de um ciêntista..."
                     value={responses.scienceReference}
                     onChange={(e) =>
                       updateResponse("scienceReference", e.target.value)
                     }
-                    className="h-10"
+                    className="text-sm"
                   />
                 </div>
 

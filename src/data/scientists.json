@@ -11,7 +11,8 @@
       "Retrovírus endógenos humanos",
       "Genética viral e mutações",
       "Proteínas virais",
-      "Infecção pelo HIV-1"
+      "Infecção pelo HIV-1",
+      "Biomedicina"
     ],
     "publications": [
       {
@@ -48,7 +49,8 @@
       "Modelos Relativísticos",
       "Equações de Estado",
       "Cromodinâmica Quântica (QCD)",
-      "Divulgação Científica"
+      "Divulgação Científica",
+      "Física"
     ],
     "publications": [
       {
@@ -85,7 +87,8 @@
       "Radiação Cósmica de Fundo (CMB)",
       "Cosmologia Observacional",
       "Lentes Gravitacionais",
-      "Estrutura em Grande Escala do Universo"
+      "Estrutura em Grande Escala do Universo",
+      "Física"
     ],
     "publications": [
       {
@@ -141,5 +144,42 @@
         "journal": "Developing World Bioethics"
       }
     ]
-  }
+  },
+ {
+   "id": 5,
+   "name": "Silvia Guimarães",
+   "image": "scientist05.png",
+   "field": "Física Aplicada e Ensino de Ciências",
+   "institution": "Instituto Tecnológico de Aeronáutica (ITA)",
+   "research": "Silvia Guimarães é física com graduação pela Universidade Federal de São Carlos, mestrado pela Universidade de São Paulo (IFQSC) e doutorado em Materiais Eletrônicos pela The University of Manchester Institute Of Science And Technology. Professora Associada no ITA/DCTA, atua em Física Aplicada com ênfase em propriedades eletro-ópticas de ligas semicondutoras crescidas epitaxialmente, sensores de radiação infravermelha e dispositivos fotocondutores. Também é referência no ensino de Física Experimental para engenharias com metodologias ativas (PBL) e uso de tecnologias como Tracker, Arduino e Mathematica. É inventora de técnica patenteada para produção de sensores infravermelhos. Líder em inclusão, atua contra o racismo e pela equidade de gênero nas ciências. Membra de diversas organizações como ABPN, SBF (JEDI), AFROBRAS e COMPIR. Reconhecida internacionalmente, foi listada entre as 100 Pessoas Inovadoras da América Latina (2023) e uma das 15 Mulheres mais Poderosas do Brasil pela FORBES (2025).",
+   "researchThemes": [
+     "Física da Matéria Condensada",
+     "Dispositivos Eletrônicos e Sensores",
+     "Materiais Semicondutores",
+     "Tecnologia e Inovação",
+     "Ensino de Ciências e Engenharia",
+     "Inclusão e Diversidade nas Ciências",
+     "Popularização da Ciência",
+     "Física"
+   ],
+   "lattes": "http://lattes.cnpq.br/3737671551535600" ,   
+   "publications": [
+     {
+       "title": "Descolonizando as ciências e as tecnologias",
+       "year": 2019,
+       "journal": "Caderno de Resumos do II Encontro Internacional de Cultura, Linguagem e Tecnologias do Recôncavo"
+     },
+     {
+       "title": "Modified LPE system used to diffuse Cd to obtain InSb infrared detectors",
+       "year": 2008,
+       "journal": "Journal of Crystal Growth"
+     },
+     {
+       "title": "Comparison Between Epitaxial Layers grown by Hot Wall Epitaxy and Flash Evaporation",
+       "year": 2003,
+       "journal": "Acta Microscópica"
+     }
+   ]
+ }
+
 ]
