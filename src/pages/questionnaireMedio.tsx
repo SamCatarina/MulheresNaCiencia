@@ -698,9 +698,6 @@ const QuestionnaireMedio = () => {
                       <SelectItem value="reconhecem-muito">
                         Reconhecem e valorizam muito
                       </SelectItem>
-                      <SelectItem value="reconhecem-bastante">
-                        Reconhecem e valorizam bastante
-                      </SelectItem>
                       <SelectItem value="reconhecem-razoavel">
                         Reconhecem e valorizam de forma razoável
                       </SelectItem>
