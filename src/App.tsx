@@ -12,6 +12,7 @@ import NotFound from "./pages/not-found";
 import useHashLocation from "./hooks/useHasLocation";
 import { useEffect } from "react";
 import Career from "./pages/career";
+import QuestionnaireMedio from "./pages/questionnaireMedio";
 
 function AppRouter() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function AppRouter() {
           <Route path="/" component={Home} />
           <Route path="/scientists" component={Scientists} />
           <Route path="/questionnaire" component={Questionnaire} />
+          <Route path="/questionarioMedio" component={QuestionnaireMedio} />
           <Route path="/scientists/:id" component={Scientists} />
           <Route path="/career" component={Career} />
           <Route component={NotFound} />
