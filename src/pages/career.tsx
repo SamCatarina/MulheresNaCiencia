@@ -16,8 +16,7 @@ export default function Career() {
             Carreiras na Ciência
           </h2>
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Explore perfis de mulheres notáveis fazendo contribuições
-            significativas para a ciência e tecnologia.
+            Explore áreas de estudo e opções de carreira em cursos oferecidos na cidade de Salgueiro
           </p>
         </div>
 
@@ -264,7 +263,7 @@ export default function Career() {
           ]}
         />
 
-        
+
       </div>
     </section>
   );
